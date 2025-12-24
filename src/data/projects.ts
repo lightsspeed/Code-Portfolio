@@ -3,7 +3,7 @@ export type Project = {
   name: string;
   description: string;
   techStack: string[];
-  category: "infrastructure" | "automation" | "monitoring" | "security";
+  category: "infrastructure" | "automation" | "monitoring" | "security" | "cicd";
   githubUrl?: string;
   liveUrl?: string;
 };
@@ -64,6 +64,34 @@ export const projects: Project[] = [
     category: "automation",
     githubUrl: "https://github.com",
   },
+  {
+    id: "7",
+    name: "Multi-Cloud CI/CD Platform",
+    description:
+      "Unified CI/CD platform supporting deployments across AWS, Azure, and GCP with centralized pipeline management.",
+    techStack: ["Jenkins", "Terraform", "Docker", "Kubernetes"],
+    category: "cicd",
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "8",
+    name: "GitHub Actions Workflow Library",
+    description:
+      "Reusable GitHub Actions workflows for testing, building, and deploying applications with best practices.",
+    techStack: ["GitHub Actions", "YAML", "Docker", "Node.js"],
+    category: "cicd",
+    githubUrl: "https://github.com",
+    liveUrl: "https://example.com",
+  },
+  {
+    id: "9",
+    name: "GitLab CI Pipeline Templates",
+    description:
+      "Standardized GitLab CI templates for microservices with automated testing, security scanning, and deployment.",
+    techStack: ["GitLab CI", "Docker", "Kubernetes", "Trivy"],
+    category: "cicd",
+    githubUrl: "https://github.com",
+  },
 ];
 
 export const projectCategories = [
@@ -72,4 +100,5 @@ export const projectCategories = [
   { value: "automation", label: "Automation" },
   { value: "monitoring", label: "Monitoring" },
   { value: "security", label: "Security" },
+  { value: "cicd", label: "CI/CD" },
 ];
