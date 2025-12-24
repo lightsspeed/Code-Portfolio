@@ -6,6 +6,7 @@ export type Project = {
   category: "infrastructure" | "automation" | "monitoring" | "security" | "cicd";
   githubUrl?: string;
   liveUrl?: string;
+  architectureUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -17,6 +18,7 @@ export const projects: Project[] = [
     techStack: ["Kubernetes", "Go", "Prometheus", "AWS"],
     category: "infrastructure",
     githubUrl: "https://github.com",
+    architectureUrl: "https://example.com/architecture",
   },
   {
     id: "2",
@@ -36,6 +38,7 @@ export const projects: Project[] = [
     techStack: ["Prometheus", "Grafana", "Alertmanager", "PagerDuty"],
     category: "monitoring",
     githubUrl: "https://github.com",
+    architectureUrl: "https://example.com/architecture",
   },
   {
     id: "4",
@@ -54,6 +57,7 @@ export const projects: Project[] = [
     techStack: ["Vault", "Kubernetes", "Terraform", "Python"],
     category: "security",
     githubUrl: "https://github.com",
+    architectureUrl: "https://example.com/architecture",
   },
   {
     id: "6",
