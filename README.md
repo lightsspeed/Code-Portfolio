@@ -1,73 +1,117 @@
-# Welcome to your Lovable project
 
-## Project info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+```markdown
+# Personal Portfolio
 
-## How can I edit this code?
+A modern, responsive personal portfolio website built with the latest web technologies. Deployed and ready to showcase your work!
 
-There are several ways of editing your application.
+🌐 **Live Site**: https://deployone.cloud (or your custom domain)
 
-**Use Lovable**
+## 🚀 Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- Fully responsive design (mobile, tablet, desktop)
+- Clean, minimal UI with Tailwind CSS
+- Built with Vite + React + TypeScript
+- Beautiful components powered by **shadcn/ui**
+- Fast loading with optimized assets
+- Custom domain support via CloudFront + Route 53
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠 Tech Stack
 
-**Use your preferred IDE**
+- **Frontend**: React + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Hosting**: AWS S3 + CloudFront (global CDN)
+- **DNS**: AWS Route 53
+- **SSL**: AWS ACM (free HTTPS)
+- **Deployment**: Automated via bash script
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📂 Project Structure
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```
+.
+├── public/               # Static assets (favicon, images)
+├── src/                  # Source code
+│   ├── components/       # Reusable UI components
+│   ├── pages/            # Page components
+│   └── App.tsx           # Main app
+├── dist/                 # Built production files (generated)
+├── Dockerfile            # For containerization (optional)
+├── deploy.sh             # One-click deployment script
+└── package.json
+```
 
-Follow these steps:
+## 🚀 Local Development
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
+- Node.js (v18 or higher)
+- npm
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Setup
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+# Clone the repo
+git clone <your-repo-url>
+cd <project-folder>
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open http://localhost:5173 to view the app.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🌍 Deployment
 
-**Use GitHub Codespaces**
+Your site is hosted on **AWS S3 + CloudFront** for speed and reliability.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### One-Click Deploy
 
-## What technologies are used for this project?
+```bash
+# Make sure you're in the project root
+chmod +x deploy.sh        # First time only
+./deploy.sh
+```
 
-This project is built with:
+This script:
+1. Builds the site (`npm run build`)
+2. Uploads to S3
+3. Invalidates CloudFront cache
+4. Deploys instantly worldwide
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🔒 Custom Domain & HTTPS
 
-## How can I deploy this project?
+Already configured:
+- Domain: `deployone.cloud` (or your custom domain)
+- HTTPS via AWS Certificate Manager
+- Global delivery via CloudFront edge locations
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+To add your own domain:
+1. Go to Route 53 → Create Hosted Zone for your domain
+2. Update nameservers at your registrar
+3. Add CNAME records (Lovable or manual)
 
-## Can I connect a custom domain to my Lovable project?
+## 🤝 Contributing
 
-Yes, you can!
+Feel free to:
+- Add new sections (About, Projects, Blog, Contact)
+- Customize colors/theme in Tailwind config
+- Add animations or dark mode
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📝 License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Personal use – feel free to modify and make it your own!
+
+---
+
+Made with ❤️ using modern web tools & AWS
+```
+
+Just replace this content in your `README.md` file.  
+It’s clean, professional, and explains everything clearly for visitors, recruiters, or future you.
+
+Let me know if you want to add a screenshot section, badges, or dark mode toggle instructions! 🚀
+```
