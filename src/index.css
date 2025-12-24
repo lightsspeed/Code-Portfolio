@@ -35,6 +35,9 @@
     --ring: 0 0% 4%;
 
     --radius: 0.5rem;
+
+    --card-glow: 0 4px 20px -4px hsl(0 0% 0% / 0.08);
+    --card-glow-hover: 0 8px 30px -4px hsl(0 0% 0% / 0.15);
   }
 
   .dark {
@@ -65,6 +68,9 @@
     --border: 0 0% 15%;
     --input: 0 0% 15%;
     --ring: 0 0% 83%;
+
+    --card-glow: 0 4px 20px -4px hsl(0 0% 100% / 0.05);
+    --card-glow-hover: 0 8px 30px -4px hsl(0 0% 100% / 0.12);
   }
 }
 
