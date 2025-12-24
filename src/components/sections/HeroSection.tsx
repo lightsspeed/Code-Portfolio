@@ -1,20 +1,30 @@
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data/profile";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { cn } from "@/lib/utils";
 
 export function HeroSection() {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
   return (
     <section
+      ref={ref as React.RefObject<HTMLElement>}
       id="hero"
       className="min-h-screen flex items-center justify-center pt-16"
       aria-label="Introduction"
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center">
+        <div
+          className={cn(
+            "max-w-3xl mx-auto text-center opacity-0",
+            isVisible && "animate-fade-in-up"
+          )}
+        >
           {/* Avatar */}
           <div className="mb-8">
             <div
-              className="inline-flex items-center justify-center w-28 h-28 rounded-full border border-border bg-secondary text-3xl font-semibold"
+              className="inline-flex items-center justify-center w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-border bg-secondary text-4xl md:text-5xl font-semibold"
               aria-label="Profile avatar"
             >
               {profile.name
