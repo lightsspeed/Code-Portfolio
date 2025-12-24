@@ -14,6 +14,11 @@ permissions:
 jobs:
   security-and-deploy:
     runs-on: ubuntu-latest
+
+    # Run dependency review ONLY on pull requests
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+
+
     steps:
       # ------------------- Checkout -------------------
       - name: Checkout code
@@ -59,6 +64,7 @@ jobs:
 
       # ------------------- Dependency Review (GitHub native) -------------------
       - name: Dependency Review
+        if: github.event_name == 'pull_request'
         uses: actions/dependency-review-action@v4
 
       # ------------------- Trivy Filesystem Scan (SCA + config) -------------------
