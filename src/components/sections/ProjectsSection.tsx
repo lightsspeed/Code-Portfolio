@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, LayoutPanelTop } from "lucide-react";
 import { projects, projectCategories, type Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -31,6 +31,17 @@ function ProjectCard({ project }: { project: Project }) {
                 aria-label={`View ${project.name} live demo`}
               >
                 <ExternalLink className="h-4 w-4" strokeWidth={1.5} />
+              </a>
+            )}
+            {project.architectureUrl && (
+              <a
+                href={project.architectureUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={`View ${project.name} architecture`}
+              >
+                <LayoutPanelTop className="h-4 w-4" strokeWidth={1.5} />
               </a>
             )}
           </div>
