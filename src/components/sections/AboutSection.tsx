@@ -1,11 +1,25 @@
 import { profile } from "@/data/profile";
 import { MapPin, Briefcase, Target } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { cn } from "@/lib/utils";
 
 export function AboutSection() {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
   return (
-    <section id="about" className="py-20" aria-labelledby="about-heading">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      id="about"
+      className="py-20"
+      aria-labelledby="about-heading"
+    >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto">
+        <div
+          className={cn(
+            "max-w-3xl mx-auto opacity-0",
+            isVisible && "animate-fade-in-up"
+          )}
+        >
           <h2
             id="about-heading"
             className="text-2xl font-bold tracking-tight mb-8"

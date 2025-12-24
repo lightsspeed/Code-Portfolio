@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Github, ExternalLink } from "lucide-react";
 import { projects, projectCategories, type Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 function ProjectCard({ project }: { project: Project }) {
   return (
@@ -52,6 +53,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const { ref, isVisible } = useScrollAnimation(0.1);
 
   const filteredProjects =
     activeCategory === "all"
@@ -59,9 +61,19 @@ export function ProjectsSection() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="py-20" aria-labelledby="projects-heading">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      id="projects"
+      className="py-20"
+      aria-labelledby="projects-heading"
+    >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-5xl mx-auto">
+        <div
+          className={cn(
+            "max-w-5xl mx-auto opacity-0",
+            isVisible && "animate-fade-in-up"
+          )}
+        >
           <h2
             id="projects-heading"
             className="text-2xl font-bold tracking-tight mb-8"
