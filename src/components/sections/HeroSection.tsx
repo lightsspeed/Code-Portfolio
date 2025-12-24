@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { profile } from "@/data/profile";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { cn } from "@/lib/utils";
+import profilePhoto from "@/assets/profile-photo.png";
 
 export function HeroSection() {
   const { ref, isVisible } = useScrollAnimation(0.1);
@@ -23,15 +24,11 @@ export function HeroSection() {
         >
           {/* Avatar */}
           <div className="mb-8">
-            <div
-              className="inline-flex items-center justify-center w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-border bg-secondary text-4xl md:text-5xl font-semibold"
-              aria-label="Profile avatar"
-            >
-              {profile.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </div>
+            <img
+              src={profilePhoto}
+              alt={`${profile.name} profile photo`}
+              className="w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-border object-cover mx-auto"
+            />
           </div>
 
           {/* Introduction */}
