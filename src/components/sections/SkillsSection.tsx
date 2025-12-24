@@ -32,7 +32,7 @@ export function SkillsSection() {
               return (
                 <div
                   key={category.name}
-                  className="p-6 bg-card rounded-lg border border-border shadow-[var(--card-glow)] hover:shadow-[var(--card-glow-hover)] transition-shadow duration-300"
+                  className="p-6 rounded-lg card-glow gradient-border"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <Icon

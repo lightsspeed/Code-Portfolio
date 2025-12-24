@@ -6,7 +6,7 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="p-6 bg-card rounded-lg border border-border flex flex-col h-full shadow-[var(--card-glow)] hover:shadow-[var(--card-glow-hover)] transition-shadow duration-300">
+    <article className="p-6 rounded-lg flex flex-col h-full card-glow gradient-border">
       <div className="flex-1">
         <div className="flex items-start justify-between gap-4 mb-3">
           <h3 className="font-medium">{project.name}</h3>
