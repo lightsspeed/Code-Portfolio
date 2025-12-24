@@ -13,7 +13,7 @@ export function Footer() {
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <Mail className="h-4 w-4" strokeWidth={1.5} />
-            <span className="text-sm">{profile.email}</span>
+            <span className="text-sm">Mail: {profile.email}</span>
           </a>
           <p className="text-center text-sm text-muted-foreground">
             © {currentYear} All rights reserved. Built with React + TypeScript
