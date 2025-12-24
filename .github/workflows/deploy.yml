@@ -66,6 +66,7 @@ jobs:
           format: 'sarif'
           output: 'trivy-fs.sarif'
           severity: 'CRITICAL,HIGH'
+          trivy-version: 'latest'
 
       # ------------------- Configure AWS -------------------
       - name: Configure AWS credentials
