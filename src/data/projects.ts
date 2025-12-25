@@ -96,6 +96,16 @@ export const projects: Project[] = [
     category: "cicd",
     githubUrl: "https://github.com",
   },
+  {
+  id: "10",
+  name: "AWS Static Portfolio Hosting",
+  description:
+    "Production-grade static website infrastructure on AWS using Terraform. Includes private S3 buckets, CloudFront CDN with Origin Access Control, Route 53 custom domain with www redirect, ACM HTTPS certificate, CloudWatch monitoring, and automated deployment pipeline.",
+  techStack: ["Terraform", "AWS", "S3", "CloudFront", "Route53", "ACM", "GitHub Actions", "Bash"],
+  category: "infrastructure",
+  githubUrl: "https://github.com/lightsspeed/Infra-Portfolio",
+  liveUrl: "https://deployone.cloud"
+}
 ];
 
 export const projectCategories = [
