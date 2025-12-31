@@ -21,34 +21,18 @@ export const blogPosts: BlogPost[] = [
     slug: "scalable-cicd-github-actions",
     mediumUrl:"https://medium.com/p/6b57f2ac554a"
   },
+
   {
     id: "2",
-    title: "Kubernetes Cost Optimization: A Practical Guide",
+    title: "When to Use Python vs. Bash for DevOps Scripting",
     excerpt:
-      "Discover strategies to reduce your Kubernetes infrastructure costs by up to 40% through right-sizing, spot instances, and cluster autoscaling.",
-    date: "2024-01-08",
-    readTime: "12 min read",
-    tags: ["Kubernetes", "Cost Optimization", "Cloud"],
-    slug: "kubernetes-cost-optimization",
-  },
-  {
-    id: "3",
-    title: "Infrastructure as Code: Terraform Best Practices",
-    excerpt:
-      "Essential patterns and anti-patterns for writing maintainable Terraform code, including module design, state management, and testing strategies.",
-    date: "2023-12-20",
-    readTime: "10 min read",
-    tags: ["Terraform", "IaC", "Best Practices"],
-    slug: "terraform-best-practices",
-  },
-  {
-    id: "4",
-    title: "Observability in Modern Microservices",
-    excerpt:
-      "A deep dive into implementing comprehensive observability with distributed tracing, metrics, and structured logging using OpenTelemetry.",
-    date: "2023-12-10",
-    readTime: "15 min read",
-    tags: ["Observability", "Monitoring", "Microservices"],
-    slug: "observability-microservices",
-  },
+      "An in-depth comparison of Python and Bash for DevOps tasks, covering use cases, performance, maintainability, and community support to help you choose the right tool for your scripts.",
+    date: "2025-27-04",
+    readTime: "6 min read",
+    tags: ["Scripting", "Bash", "Cloud", "Python", "DevOps"],
+    slug: "python-vs-bash-devops",
+  }
+
+
+
 ];
