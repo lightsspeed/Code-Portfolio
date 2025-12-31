@@ -27,7 +27,7 @@ export const blogPosts: BlogPost[] = [
     title: "When to Use Python vs. Bash for DevOps Scripting",
     excerpt:
       "An in-depth comparison of Python and Bash for DevOps tasks, covering use cases, performance, maintainability, and community support to help you choose the right tool for your scripts.",
-    date: "2025-27-04",
+    date: "2025-04-27",
     readTime: "6 min read",
     tags: ["Scripting", "Bash", "Cloud", "Python", "DevOps"],
     slug: "python-vs-bash-devops",
