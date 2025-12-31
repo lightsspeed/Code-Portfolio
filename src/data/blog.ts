@@ -15,8 +15,8 @@ export const blogPosts: BlogPost[] = [
     title: "Building Scalable CI/CD Pipelines with GitHub Actions",
     excerpt:
       "Learn how to design and implement CI/CD pipelines that scale with your team, including parallel jobs, caching strategies, and reusable workflows.",
-    date: "2024-01-15",
-    readTime: "8 min read",
+    date: "2025-12-31",
+    readTime: "3 min read",
     tags: ["CI/CD", "GitHub Actions", "Automation"],
     slug: "scalable-cicd-github-actions",
     mediumUrl:"https://medium.com/p/6b57f2ac554a"
