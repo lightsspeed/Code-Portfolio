@@ -29,7 +29,7 @@ export const blogPosts: BlogPost[] = [
       "An in-depth comparison of Python and Bash for DevOps tasks, covering use cases, performance, maintainability, and community support to help you choose the right tool for your scripts.",
     date: "2025-04-27",
     readTime: "6 min read",
-    tags: ["Scripting", "Bash", "Cloud", "Python", "DevOps"],
+    tags: ["Scripting"],
     slug: "python-vs-bash-devops",
     mediumUrl:"https://medium.com/@akhileshchoure1/when-to-use-python-vs-bash-for-devops-scripting-772ab12ebda3"
   }
