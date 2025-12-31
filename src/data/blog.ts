@@ -6,6 +6,7 @@ export type BlogPost = {
   readTime: string;
   tags: string[];
   slug: string;
+  mediumUrl?: string;
 };
 
 export const blogPosts: BlogPost[] = [
@@ -18,6 +19,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     tags: ["CI/CD", "GitHub Actions", "Automation"],
     slug: "scalable-cicd-github-actions",
+    mediumUrl:"https://medium.com/p/6b57f2ac554a"
   },
   {
     id: "2",
