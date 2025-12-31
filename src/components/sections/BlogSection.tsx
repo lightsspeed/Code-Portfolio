@@ -37,10 +37,14 @@ export function BlogSection() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {blogPosts.map((post) => (
-              <article
-                key={post.id}
-                className="group p-6 rounded-lg card-glow gradient-border cursor-pointer"
-              >
+            <a
+              key={post.id}
+              href={post.mediumUrl ?? `/blog/${post.slug}`}
+              target={post.mediumUrl ? "_blank" : "_self"}
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <article className="group p-6 rounded-lg card-glow gradient-border cursor-pointer">
                 <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
                   <span className="flex items-center gap-1">
                     <Calendar className="h-3 w-3" strokeWidth={1.5} />
@@ -77,6 +81,7 @@ export function BlogSection() {
                   </span>
                 </div>
               </article>
+            </a>
             ))}
           </div>
         </div>
