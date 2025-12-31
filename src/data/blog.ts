@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "3 min read",
     tags: ["CI/CD", "GitHub Actions", "Automation"],
     slug: "scalable-cicd-github-actions",
-    mediumUrl:"https://medium.com/p/6b57f2ac554a"
+    mediumUrl:"https://medium.com/@akhileshchoure1/building-scalable-ci-cd-pipelines-with-github-actions-from-basics-to-pro-tips-6b57f2ac554a"
   },
 
   {
@@ -31,6 +31,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     tags: ["Scripting", "Bash", "Cloud", "Python", "DevOps"],
     slug: "python-vs-bash-devops",
+    mediumUrl:"https://medium.com/@akhileshchoure1/when-to-use-python-vs-bash-for-devops-scripting-772ab12ebda3"
   }
 
 
