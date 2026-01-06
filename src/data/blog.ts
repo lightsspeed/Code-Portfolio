@@ -32,8 +32,18 @@ export const blogPosts: BlogPost[] = [
     tags: ["Scripting"],
     slug: "python-vs-bash-devops",
     mediumUrl:"https://medium.com/@akhileshchoure1/when-to-use-python-vs-bash-for-devops-scripting-772ab12ebda3"
+  },
+
+  {
+    id: "3",
+    title: "How to SSH into Your AWS EC2 Instance and Develop Directly in VS Code: A Complete Guide",
+    excerpt:
+      "Step-by-step instructions on setting up SSH access to your AWS EC2 instance and configuring Visual Studio Code for remote development, enhancing your workflow and productivity.",
+    date: "2026-01-03",
+    readTime: "3 min read",
+    tags: ["AWS", "EC2", "VS Code", "Remote Development"],
+    slug: "ssh-aws-ec2-vscode",
+    mediumUrl:"https://medium.com/@akhileshchoure1/how-to-ssh-into-your-aws-ec2-instance-and-develop-directly-in-vs-code-a-complete-guide-3cedf924a276"
   }
-
-
 
 ];
