@@ -132,7 +132,7 @@ export const projects: Project[] = [
   solution: "Leverage AWS Lambda and API Gateway to create a scalable, on-demand QR code generator with a simple web interface using AWS Amplify.",
   keyFeatures: ["Instant QR code generation", "Serverless architecture", "Web interface"],
   lessonsLearned: ["Serverless architecture simplifies deployment and scaling.", "AWS services can be seamlessly integrated for rapid development.", "Cost efficiency is achieved by paying only for what you use.", "Importance of security best practices in serverless applications.", "Monitoring and logging are crucial for debugging and performance tracking.","AWS Amplify accelerates front-end development with built-in hosting and CI/CD."],
-  visuals: ["/path/to/screenshot1.png", "/path/to/screenshot2.png"]
+  visuals: ["/projects/qr/WebApp.png", "/projects/qr/lambda1.png","/projects/qr/lambda2.png","/projects/qr/lambda3.png","/projects/qr/lambda4.png","/projects/qr/lambda5.png","/projects/qr/lambda6.png","/projects/qr/AGW1.png","/projects/qr/AGW2.png","/projects/qr/amplify1.png","/projects/qr/amplify2.png", "/projects/qr/amplify3.png", "/projects/qr/amplify4.png", "/projects/qr/amplify5.png"],
 }
 
 ];
