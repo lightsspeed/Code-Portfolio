@@ -125,7 +125,6 @@ export const projects: Project[] = [
   category: "serverless",
   githubUrl: "https://github.com/lightsspeed/QR_Lambda",
   liveUrl: "https://qr.deployone.cloud",
-<<<<<<< HEAD
   architectureUrl: "public/Architecture/QRCode.png",
   // Add these optional fields for richer detail pages:
   hook: "Generate QR codes instantly with our serverless solution!",
@@ -134,10 +133,6 @@ export const projects: Project[] = [
   keyFeatures: ["Instant QR code generation", "Serverless architecture", "Web interface"],
   lessonsLearned: ["Serverless architecture simplifies deployment and scaling.", "AWS services can be seamlessly integrated for rapid development.", "Cost efficiency is achieved by paying only for what you use.", "Importance of security best practices in serverless applications.", "Monitoring and logging are crucial for debugging and performance tracking.","AWS Amplify accelerates front-end development with built-in hosting and CI/CD."],
   visuals: ["/path/to/screenshot1.png", "/path/to/screenshot2.png"]
-
-=======
-  architectureUrl: "/Architecture/QRCode.png"
->>>>>>> b8d4a7f25c2e14c65124aed8d90ec9dfd4fa340a
 }
 
 ];
