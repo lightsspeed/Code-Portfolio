@@ -58,8 +58,15 @@ export function Header() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="text-lg font-semibold">
+          <Link to="/" className="text-lg font-semibold flex items-center gap-2">
             {profile.name}
+            <span className="flex flex-col h-4 w-6 rounded-sm overflow-hidden shadow-sm">
+              <span className="h-1/3 bg-orange-500"></span>
+              <span className="h-1/3 bg-white flex items-center justify-center">
+                <span className="w-1.5 h-1.5 rounded-full border border-blue-900"></span>
+              </span>
+              <span className="h-1/3 bg-green-600"></span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
