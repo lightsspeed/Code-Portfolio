@@ -68,6 +68,28 @@ export default function ProjectDetail() {
             {project.hook || project.description}
           </p>
 
+          {/* GitHub & Live Demo Buttons */}
+          {(project.githubUrl || project.liveUrl) && (
+            <div className="flex gap-4 mb-8 flex-wrap">
+              {project.githubUrl && (
+                <Button asChild>
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" />
+                    View on GitHub
+                  </a>
+                </Button>
+              )}
+              {project.liveUrl && (
+                <Button asChild variant="outline">
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Live Demo
+                  </a>
+                </Button>
+              )}
+            </div>
+          )}
+
           {/* Tech Stack Table */}
           <section className="mb-12">
             <h2 className="text-xl font-semibold mb-4">Tech Stack</h2>
@@ -175,26 +197,14 @@ export default function ProjectDetail() {
           <section className="p-8 rounded-lg border bg-muted/30 text-center">
             <h2 className="text-xl font-semibold mb-3">Interested in this project?</h2>
             <p className="text-muted-foreground mb-6">
-              Check out the source code or see it in action.
+              Feel free to reach out or check out my other projects.
             </p>
-            <div className="flex gap-4 justify-center flex-wrap">
-              {project.githubUrl && (
-                <Button asChild>
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" />
-                    View on GitHub
-                  </a>
-                </Button>
-              )}
-              {project.liveUrl && (
-                <Button asChild variant="outline">
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Live Demo
-                  </a>
-                </Button>
-              )}
-            </div>
+            <Button asChild variant="outline">
+              <Link to="/#projects">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                View All Projects
+              </Link>
+            </Button>
           </section>
         </div>
       </main>
