@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Github, ExternalLink, BookOpen, ChevronDown, X, ZoomIn, ZoomOut } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -56,43 +56,44 @@ export default function ProjectDetail() {
             </Link>
           </Button>
 
-          {/* Title & Lessons Button */}
-          <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
-            <h1 className="text-3xl md:text-4xl font-bold">{project.name}</h1>
-            {project.lessonsLearned && project.lessonsLearned.length > 0 && (
-              <Button variant="outline" size="sm" onClick={scrollToLessons}>
-                <BookOpen className="mr-2 h-4 w-4" />
-                Lessons Learned
-              </Button>
-            )}
-          </div>
+          {/* Title */}
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">{project.name}</h1>
 
           {/* Hook */}
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed text-justify">
             {project.hook || project.description}
           </p>
 
-          {/* GitHub & Live Demo Buttons */}
-          {(project.githubUrl || project.liveUrl) && (
-            <div className="flex gap-4 mb-8 flex-wrap">
-              {project.githubUrl && (
-                <Button asChild>
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" />
-                    View on GitHub
-                  </a>
-                </Button>
-              )}
-              {project.liveUrl && (
-                <Button asChild variant="outline">
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Live Demo
-                  </a>
-                </Button>
-              )}
-            </div>
-          )}
+          {/* Action Buttons - All in one line */}
+          <div className="flex gap-4 mb-8 flex-wrap">
+            {project.lessonsLearned && project.lessonsLearned.length > 0 && (
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={scrollToLessons}
+                className="hover:border-orange-500 hover:text-orange-500 transition-colors"
+              >
+                <BookOpen className="mr-2 h-4 w-4" />
+                Lessons Learned
+              </Button>
+            )}
+            {project.githubUrl && (
+              <Button asChild size="sm">
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <Github className="mr-2 h-4 w-4" />
+                  View on GitHub
+                </a>
+              </Button>
+            )}
+            {project.liveUrl && (
+              <Button asChild variant="outline" size="sm">
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Live Demo
+                </a>
+              </Button>
+            )}
+          </div>
 
           {/* Tech Stack */}
           <section className="mb-12">
@@ -222,6 +223,34 @@ function VisualsSection({ visuals, projectName }: { visuals: string[]; projectNa
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedIndex, goToNext, goToPrev, closeLightbox]);
 
+  // Touch/swipe navigation
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+  const minSwipeDistance = 50;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = null;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) goToNext();
+    else if (isRightSwipe) goToPrev();
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
     <section className="mb-12">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
@@ -259,7 +288,12 @@ function VisualsSection({ visuals, projectName }: { visuals: string[]; projectNa
       {/* Lightbox Modal */}
       <Dialog open={selectedIndex !== null} onOpenChange={() => closeLightbox()}>
         <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-black/95 border-none">
-          <div className="relative w-full h-full flex items-center justify-center">
+          <div 
+            className="relative w-full h-full flex items-center justify-center"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Controls */}
             <div className="absolute top-4 right-4 z-10 flex gap-2">
               <Button
