@@ -36,7 +36,7 @@ export function HeroSection() {
           </h1>
 
           {/* Bio */}
-          <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-xl">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-xl text-justify">
             {profile.bio}
           </p>
 
