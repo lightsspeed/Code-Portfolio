@@ -1,18 +1,17 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Github, ExternalLink, BookOpen } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink, BookOpen, ChevronDown, X, ZoomIn, ZoomOut } from "lucide-react";
 import { projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Badge } from "@/components/ui/badge";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
   const project = projects.find((p) => p.id === id);
@@ -90,28 +89,15 @@ export default function ProjectDetail() {
             </div>
           )}
 
-          {/* Tech Stack Table */}
+          {/* Tech Stack */}
           <section className="mb-12">
             <h2 className="text-xl font-semibold mb-4">Tech Stack</h2>
-            <div className="rounded-lg border">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Technology</TableHead>
-                    <TableHead>Category</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {project.techStack.map((tech, index) => (
-                    <TableRow key={tech}>
-                      <TableCell className="font-medium">{tech}</TableCell>
-                      <TableCell className="text-muted-foreground">
-                        {getCategoryForTech(tech)}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+            <div className="flex flex-wrap gap-2">
+              {project.techStack.map((tech) => (
+                <Badge key={tech} variant="secondary" className="text-sm px-3 py-1">
+                  {tech}
+                </Badge>
+              ))}
             </div>
           </section>
 
@@ -129,22 +115,9 @@ export default function ProjectDetail() {
             </section>
           )}
 
-          {/* Visuals */}
+          {/* Visuals - Collapsible with Lightbox */}
           {project.visuals && project.visuals.length > 0 && (
-            <section className="mb-12">
-              <h2 className="text-xl font-semibold mb-4">Visuals</h2>
-              <div className="grid gap-4 md:grid-cols-2">
-                {project.visuals.map((visual, index) => (
-                  <div key={index} className="rounded-lg border overflow-hidden">
-                    <img
-                      src={visual}
-                      alt={`${project.name} visual ${index + 1}`}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                ))}
-              </div>
-            </section>
+            <VisualsSection visuals={project.visuals} projectName={project.name} />
           )}
 
           {/* Problem & Solution */}
@@ -200,39 +173,100 @@ export default function ProjectDetail() {
   );
 }
 
-// Helper functions
-function getCategoryForTech(tech: string): string {
-  const categories: Record<string, string> = {
-    Kubernetes: "Container Orchestration",
-    Docker: "Containerization",
-    Terraform: "Infrastructure as Code",
-    AWS: "Cloud Provider",
-    Go: "Programming Language",
-    Python: "Programming Language",
-    "Node.js": "Runtime",
-    Prometheus: "Monitoring",
-    Grafana: "Visualization",
-    ArgoCD: "GitOps",
-    Helm: "Package Manager",
-    "GitHub Actions": "CI/CD",
-    "GitLab CI": "CI/CD",
-    Jenkins: "CI/CD",
-    Vault: "Secrets Management",
-    PostgreSQL: "Database",
-    S3: "Storage",
-    CloudFront: "CDN",
-    Route53: "DNS",
-    ACM: "SSL/TLS",
-    Alertmanager: "Alerting",
-    PagerDuty: "Incident Management",
-    Terratest: "Testing",
-    Trivy: "Security Scanning",
-    YAML: "Configuration",
-    Bash: "Scripting",
-  };
-  return categories[tech] || "Tool";
+// Visuals Section Component with Collapsible and Lightbox
+function VisualsSection({ visuals, projectName }: { visuals: string[]; projectName: string }) {
+  const [isOpen, setIsOpen] = useState(true);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [zoom, setZoom] = useState(1);
+
+  const handleZoomIn = () => setZoom((z) => Math.min(z + 0.25, 3));
+  const handleZoomOut = () => setZoom((z) => Math.max(z - 0.25, 0.5));
+  const resetZoom = () => setZoom(1);
+
+  return (
+    <section className="mb-12">
+      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+        <CollapsibleTrigger asChild>
+          <button className="flex items-center gap-2 text-xl font-semibold mb-4 hover:text-primary transition-colors">
+            <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? "" : "-rotate-90"}`} />
+            Visuals ({visuals.length})
+          </button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="grid gap-4 md:grid-cols-2">
+            {visuals.map((visual, index) => (
+              <div
+                key={index}
+                className="rounded-lg border overflow-hidden cursor-pointer group relative"
+                onClick={() => {
+                  setSelectedImage(visual);
+                  resetZoom();
+                }}
+              >
+                <img
+                  src={visual}
+                  alt={`${projectName} visual ${index + 1}`}
+                  className="w-full h-auto transition-transform group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+
+      {/* Lightbox Modal */}
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-black/95 border-none">
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* Controls */}
+            <div className="absolute top-4 right-4 z-10 flex gap-2">
+              <Button
+                variant="secondary"
+                size="icon"
+                onClick={handleZoomOut}
+                disabled={zoom <= 0.5}
+              >
+                <ZoomOut className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="secondary"
+                size="icon"
+                onClick={handleZoomIn}
+                disabled={zoom >= 3}
+              >
+                <ZoomIn className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="secondary"
+                size="icon"
+                onClick={() => setSelectedImage(null)}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+
+            {/* Image */}
+            <div className="overflow-auto max-w-full max-h-[90vh] p-4">
+              {selectedImage && (
+                <img
+                  src={selectedImage}
+                  alt="Full size visual"
+                  className="transition-transform duration-200"
+                  style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
+                />
+              )}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </section>
+  );
 }
 
+// Helper functions
 function getDefaultFeatures(project: { techStack: string[] }): string[] {
   return [
     "Production-ready infrastructure configuration",
