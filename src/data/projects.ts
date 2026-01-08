@@ -3,11 +3,11 @@ export type Project = {
   name: string;
   description: string;
   techStack: string[];
-  category: "infrastructure" | "automation" | "monitoring" | "security" | "cicd";
+  category: "infrastructure" | "automation" | "monitoring" | "security" | "cicd" | "serverless";
   githubUrl?: string;
   liveUrl?: string;
   architectureUrl?: string;
-  // Documentation fields
+  // Documentation fields 
   hook?: string;
   problem?: string;
   solution?: string;
@@ -113,7 +113,19 @@ export const projects: Project[] = [
   githubUrl: "https://github.com/lightsspeed/Infra-Portfolio",
   liveUrl: "https://deployone.cloud",
   architectureUrl: "https://github.com/lightsspeed/Infra-Portfolio/blob/main/Assets/Infra-Portfolio.png"
+},
+{
+  id: "11",
+  name: "QR Code Generator on AWS Lambda, AWS API Gateway and AWS Amplify",
+  description:
+    "Serverless QR Code Generator using AWS Lambda, API Gateway, and Amplify: Generates QR codes on-demand with a user-friendly web interface, leveraging serverless architecture for scalability and cost-efficiency.",
+  techStack: ["AWS Lambda", "API Gateway", "AWS Amplify", "Python","Javascript", "CICD"],
+  category: "serverless",
+  githubUrl: "https://github.com/lightsspeed/QR_Lambda",
+  liveUrl: "https://qr.deployone.cloud",
+  architectureUrl: "/public/architecture/QRCode.png"
 }
+
 ];
 
 export const projectCategories = [
@@ -125,3 +137,4 @@ export const projectCategories = [
   { value: "cicd", label: "CI/CD" },
   { value: "serverless", label: "Serverless" }
 ];
+
