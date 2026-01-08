@@ -193,19 +193,6 @@ export default function ProjectDetail() {
             </div>
           </section>
 
-          {/* Call to Action */}
-          <section className="p-8 rounded-lg border bg-muted/30 text-center">
-            <h2 className="text-xl font-semibold mb-3">Interested in this project?</h2>
-            <p className="text-muted-foreground mb-6">
-              Feel free to reach out or check out my other projects.
-            </p>
-            <Button asChild variant="outline">
-              <Link to="/#projects">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                View All Projects
-              </Link>
-            </Button>
-          </section>
         </div>
       </main>
       <Footer />
