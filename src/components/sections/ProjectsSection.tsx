@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Github, ExternalLink, LayoutPanelTop } from "lucide-react";
 import { projects, projectCategories, type Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
@@ -6,59 +7,64 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="p-6 rounded-lg flex flex-col h-full card-glow gradient-border">
-      <div className="flex-1">
-        <div className="flex items-start justify-between gap-4 mb-3">
-          <h3 className="font-medium">{project.name}</h3>
-          <div className="flex gap-2">
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label={`View ${project.name} on GitHub`}
-              >
-                <Github className="h-4 w-4" strokeWidth={1.5} />
-              </a>
-            )}
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label={`View ${project.name} live demo`}
-              >
-                <ExternalLink className="h-4 w-4" strokeWidth={1.5} />
-              </a>
-            )}
-            {project.architectureUrl && (
-              <a
-                href={project.architectureUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label={`View ${project.name} architecture`}
-              >
-                <LayoutPanelTop className="h-4 w-4" strokeWidth={1.5} />
-              </a>
-            )}
+    <Link
+      to={`/project/${project.id}`}
+      className="block group"
+    >
+      <article className="p-6 rounded-lg flex flex-col h-full card-glow gradient-border transition-transform duration-200 group-hover:scale-[1.02]">
+        <div className="flex-1">
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <h3 className="font-medium group-hover:text-primary transition-colors">{project.name}</h3>
+            <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label={`View ${project.name} on GitHub`}
+                >
+                  <Github className="h-4 w-4" strokeWidth={1.5} />
+                </a>
+              )}
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label={`View ${project.name} live demo`}
+                >
+                  <ExternalLink className="h-4 w-4" strokeWidth={1.5} />
+                </a>
+              )}
+              {project.architectureUrl && (
+                <a
+                  href={project.architectureUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label={`View ${project.name} architecture`}
+                >
+                  <LayoutPanelTop className="h-4 w-4" strokeWidth={1.5} />
+                </a>
+              )}
+            </div>
           </div>
+          <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
         </div>
-        <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {project.techStack.map((tech) => (
-          <span
-            key={tech}
-            className="px-2 py-1 text-xs bg-secondary text-secondary-foreground rounded"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-    </article>
+        <div className="flex flex-wrap gap-2">
+          {project.techStack.map((tech) => (
+            <span
+              key={tech}
+              className="px-2 py-1 text-xs bg-secondary text-secondary-foreground rounded"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </article>
+    </Link>
   );
 }
 
@@ -75,7 +81,7 @@ export function ProjectsSection() {
     <section
       ref={ref as React.RefObject<HTMLElement>}
       id="projects"
-      className="py-20"
+      className="py-10"
       aria-labelledby="projects-heading"
     >
       <div className="container mx-auto px-4 md:px-6">
