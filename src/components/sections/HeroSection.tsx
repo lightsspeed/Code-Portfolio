@@ -1,4 +1,4 @@
-import { Download } from "lucide-react";
+import { Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data/profile";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -47,6 +47,35 @@ export function HeroSection() {
               Download Resume
             </a>
           </Button>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-4 mt-6">
+            <a
+              href={profile.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="h-5 w-5" strokeWidth={1.5} />
+            </a>
+            <a
+              href={profile.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" strokeWidth={1.5} />
+            </a>
+            <a
+              href={profile.social.email}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="h-5 w-5" strokeWidth={1.5} />
+            </a>
+          </div>
         </div>
       </div>
     </section>

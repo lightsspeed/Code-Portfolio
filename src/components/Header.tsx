@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { profile } from "@/data/profile";
@@ -14,6 +14,8 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,28 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleHashNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const hash = href.split("#")[1];
+    
+    if (location.pathname === "/") {
+      // Already on home page, just scroll to element
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navigate to home page first, then scroll
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  };
 
   return (
     <header
@@ -49,6 +73,15 @@ export function Header() {
                 >
                   {link.label}
                 </Link>
+              ) : link.href.includes("#") ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleHashNavigation(e, link.href)}
+                  className="text-sm font-semibold text-foreground hover:text-primary transition-colors cursor-pointer"
+                >
+                  {link.label}
+                </a>
               ) : (
                 <a
                   key={link.href}
@@ -98,6 +131,18 @@ export function Header() {
                   >
                     {link.label}
                   </Link>
+                ) : link.href.includes("#") ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => {
+                      handleHashNavigation(e, link.href);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="py-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                  >
+                    {link.label}
+                  </a>
                 ) : (
                   <a
                     key={link.href}
