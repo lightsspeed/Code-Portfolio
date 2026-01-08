@@ -123,4 +123,5 @@ export const projectCategories = [
   { value: "monitoring", label: "Monitoring" },
   { value: "security", label: "Security" },
   { value: "cicd", label: "CI/CD" },
+  { value: "serverless", label: "Serverless" }
 ];
