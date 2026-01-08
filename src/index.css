@@ -131,4 +131,39 @@
       hsl(var(--muted-foreground) / 0.5) 100%
     );
   }
+
+  /* Flag shimmer effect */
+  .flag-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flag-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(255, 255, 255, 0.6) 50%,
+      transparent 60%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: none;
+  }
+
+  .flag-shimmer:hover::after {
+    animation: shimmer 0.8s ease-in-out;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
