@@ -12,33 +12,31 @@ export function HeroSection() {
     <section
       ref={ref as React.RefObject<HTMLElement>}
       id="about"
-      className="py-16 md:py-24 pt-24 md:pt-28"
+      className="py-12 md:py-16 pt-20 md:pt-24"
       aria-label="Introduction"
     >
       <div className="container mx-auto px-4 md:px-6">
         <div
           className={cn(
-            "max-w-3xl opacity-0",
+            "flex flex-col items-center text-center opacity-0",
             isVisible && "animate-fade-in-up"
           )}
         >
-          {/* Photo and Intro */}
-          <div className="flex items-start gap-6 mb-8">
-            <img
-              src={profilePhoto}
-              alt={`${profile.name} profile photo`}
-              className="w-20 h-20 md:w-24 md:h-24 rounded-full border border-border object-cover shrink-0"
-            />
-            <div>
-              <p className="text-muted-foreground mb-1">Hello World,</p>
-              <h1 className="text-2xl md:text-4xl font-bold tracking-tight">
-                I'm {profile.name}
-              </h1>
-            </div>
-          </div>
+          {/* Photo */}
+          <img
+            src={profilePhoto}
+            alt={`${profile.name} profile photo`}
+            className="w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-border object-cover mb-6"
+          />
+
+          {/* Intro */}
+          <p className="text-muted-foreground mb-1">Hello World,</p>
+          <h1 className="text-2xl md:text-4xl font-bold tracking-tight mb-4">
+            I'm {profile.name}
+          </h1>
 
           {/* Bio */}
-          <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-2xl">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-xl">
             {profile.bio}
           </p>
 

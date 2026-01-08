@@ -7,6 +7,13 @@ export type Project = {
   githubUrl?: string;
   liveUrl?: string;
   architectureUrl?: string;
+  // Documentation fields
+  hook?: string;
+  problem?: string;
+  solution?: string;
+  keyFeatures?: string[];
+  lessonsLearned?: string[];
+  visuals?: string[];
 };
 
 export const projects: Project[] = [
