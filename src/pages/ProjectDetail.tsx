@@ -64,21 +64,20 @@ export default function ProjectDetail() {
             {project.hook || project.description}
           </p>
 
-          {/* Action Buttons - All in one line */}
+          {/* Action Buttons - All in one line, same size */}
           <div className="flex gap-4 mb-8 flex-wrap">
             {project.lessonsLearned && project.lessonsLearned.length > 0 && (
               <Button 
                 variant="outline" 
-                size="sm" 
                 onClick={scrollToLessons}
-                className="hover:border-orange-500 hover:text-orange-500 transition-colors"
+                className="hover:border-orange-500 hover:text-orange-500 transition-colors min-w-[140px]"
               >
                 <BookOpen className="mr-2 h-4 w-4" />
                 Lessons Learned
               </Button>
             )}
             {project.githubUrl && (
-              <Button asChild size="sm">
+              <Button asChild className="min-w-[140px]">
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-4 w-4" />
                   View on GitHub
@@ -86,7 +85,7 @@ export default function ProjectDetail() {
               </Button>
             )}
             {project.liveUrl && (
-              <Button asChild variant="outline" size="sm">
+              <Button asChild variant="outline" className="min-w-[140px]">
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Live Demo
@@ -228,27 +227,59 @@ function VisualsSection({ visuals, projectName }: { visuals: string[]; projectNa
   const touchEndX = useRef<number | null>(null);
   const minSwipeDistance = 50;
 
+  // Pinch-to-zoom
+  const initialPinchDistance = useRef<number | null>(null);
+  const initialZoom = useRef<number>(1);
+
+  const getDistance = (touches: React.TouchList) => {
+    if (touches.length < 2) return null;
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  };
+
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchEndX.current = null;
+    if (e.touches.length === 2) {
+      // Pinch start
+      initialPinchDistance.current = getDistance(e.touches);
+      initialZoom.current = zoom;
+    } else if (e.touches.length === 1) {
+      // Swipe start
+      touchStartX.current = e.touches[0].clientX;
+      touchEndX.current = null;
+    }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
+    if (e.touches.length === 2 && initialPinchDistance.current) {
+      // Pinch move
+      const currentDistance = getDistance(e.touches);
+      if (currentDistance) {
+        const scale = currentDistance / initialPinchDistance.current;
+        const newZoom = Math.min(Math.max(initialZoom.current * scale, 0.5), 3);
+        setZoom(newZoom);
+      }
+    } else if (e.touches.length === 1) {
+      // Swipe move
+      touchEndX.current = e.touches[0].clientX;
+    }
   };
 
   const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-    
-    const distance = touchStartX.current - touchEndX.current;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
+    // Handle swipe end
+    if (touchStartX.current && touchEndX.current) {
+      const distance = touchStartX.current - touchEndX.current;
+      const isLeftSwipe = distance > minSwipeDistance;
+      const isRightSwipe = distance < -minSwipeDistance;
 
-    if (isLeftSwipe) goToNext();
-    else if (isRightSwipe) goToPrev();
+      if (isLeftSwipe) goToNext();
+      else if (isRightSwipe) goToPrev();
+    }
 
+    // Reset refs
     touchStartX.current = null;
     touchEndX.current = null;
+    initialPinchDistance.current = null;
   };
 
   return (
