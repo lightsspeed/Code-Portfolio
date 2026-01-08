@@ -1,3 +1,5 @@
+import { Monitor } from "lucide-react";
+
 export type Project = {
   id: string;
   name: string;
@@ -123,7 +125,15 @@ export const projects: Project[] = [
   category: "serverless",
   githubUrl: "https://github.com/lightsspeed/QR_Lambda",
   liveUrl: "https://qr.deployone.cloud",
-  architectureUrl: "/public/architecture/QRCode.png"
+  architectureUrl: "public/Architecture/QRCode.png",
+  // Add these optional fields for richer detail pages:
+  hook: "Generate QR codes instantly with our serverless solution!",
+  problem: "Need a quick and easy way to generate QR codes without managing servers?",
+  solution: "Leverage AWS Lambda and API Gateway to create a scalable, on-demand QR code generator with a simple web interface using AWS Amplify.",
+  keyFeatures: ["Instant QR code generation", "Serverless architecture", "Web interface"],
+  lessonsLearned: ["Serverless architecture simplifies deployment and scaling.", "AWS services can be seamlessly integrated for rapid development.", "Cost efficiency is achieved by paying only for what you use.", "Importance of security best practices in serverless applications.", "Monitoring and logging are crucial for debugging and performance tracking.","AWS Amplify accelerates front-end development with built-in hosting and CI/CD."],
+  visuals: ["/path/to/screenshot1.png", "/path/to/screenshot2.png"]
+
 }
 
 ];
