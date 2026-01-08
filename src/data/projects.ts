@@ -125,7 +125,7 @@ export const projects: Project[] = [
   category: "serverless",
   githubUrl: "https://github.com/lightsspeed/QR_Lambda",
   liveUrl: "https://qr.deployone.cloud",
-  architectureUrl: "public/Architecture/QRCode.png",
+  architectureUrl: "/projects/QRCode.png",
   // Add these optional fields for richer detail pages:
   hook: "Generate QR codes instantly with our serverless solution!",
   problem: "Need a quick and easy way to generate QR codes without managing servers?",
