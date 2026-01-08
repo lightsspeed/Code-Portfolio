@@ -64,7 +64,7 @@ export default function ProjectDetail() {
           </div>
 
           {/* Hook */}
-          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+          <p className="text-xl text-muted-foreground mb-8 leading-relaxed text-justify">
             {project.hook || project.description}
           </p>
 
@@ -153,13 +153,13 @@ export default function ProjectDetail() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="p-6 rounded-lg border bg-destructive/5">
                 <h3 className="font-medium text-destructive mb-3">The Problem</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-justify">
                   {project.problem || "Manual infrastructure management leading to inconsistent deployments, security gaps, and operational overhead."}
                 </p>
               </div>
               <div className="p-6 rounded-lg border bg-primary/5">
                 <h3 className="font-medium text-primary mb-3">The Solution</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-justify">
                   {project.solution || project.description}
                 </p>
               </div>
@@ -175,7 +175,7 @@ export default function ProjectDetail() {
                   <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm shrink-0 mt-0.5">
                     {index + 1}
                   </span>
-                  <span className="text-muted-foreground">{feature}</span>
+                  <span className="text-muted-foreground text-justify">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -187,7 +187,7 @@ export default function ProjectDetail() {
             <div className="space-y-3">
               {(project.lessonsLearned || getDefaultLessons()).map((lesson, index) => (
                 <div key={index} className="p-4 rounded-lg border bg-muted/30">
-                  <p className="text-muted-foreground">{lesson}</p>
+                  <p className="text-muted-foreground text-justify">{lesson}</p>
                 </div>
               ))}
             </div>
