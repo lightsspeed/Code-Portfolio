@@ -44,6 +44,18 @@ export const blogPosts: BlogPost[] = [
     tags: ["AWS", "EC2", "VS Code", "Remote Development"],
     slug: "ssh-aws-ec2-vscode",
     mediumUrl:"https://medium.com/@akhileshchoure1/how-to-ssh-into-your-aws-ec2-instance-and-develop-directly-in-vs-code-a-complete-guide-3cedf924a276"
+  },
+
+  {
+    id: "4",
+    title: "10 Best Practices for Terraform: From Chaos to Infrastructure as Code Zen",
+    excerpt:
+      "Discover essential Terraform best practices to streamline your infrastructure as code, improve collaboration, and ensure reliable deployments in your DevOps workflows.",
+    date: "2026-01-08",
+    readTime: "5 min read",
+    tags: ["Terraform", "Infrastructure as Code", "DevOps", "Best Practices","AWS"],
+    slug: "terraform-best-practices",
+    mediumUrl:"https://medium.com/@akhileshchoure1/10-best-practices-for-terraform-from-chaos-to-infrastructure-as-code-zen-f83242f39695"
   }
 
 ];
