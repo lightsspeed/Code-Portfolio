@@ -40,11 +40,11 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
-            {navLinks.map((link) => (
+          {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-semibold text-foreground hover:text-primary transition-colors"
               >
                 {link.label}
               </a>
