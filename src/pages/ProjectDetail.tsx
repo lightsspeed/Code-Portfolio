@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Github, ExternalLink, BookOpen, ChevronDown, X, ZoomIn, ZoomOut } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -33,6 +33,11 @@ export default function ProjectDetail() {
       </div>
     );
   }
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   const scrollToLessons = () => {
     document.getElementById("lessons-learned")?.scrollIntoView({ behavior: "smooth" });
@@ -175,13 +180,47 @@ export default function ProjectDetail() {
 
 // Visuals Section Component with Collapsible and Lightbox
 function VisualsSection({ visuals, projectName }: { visuals: string[]; projectName: string }) {
-  const [isOpen, setIsOpen] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [zoom, setZoom] = useState(1);
+
+  const selectedImage = selectedIndex !== null ? visuals[selectedIndex] : null;
 
   const handleZoomIn = () => setZoom((z) => Math.min(z + 0.25, 3));
   const handleZoomOut = () => setZoom((z) => Math.max(z - 0.25, 0.5));
   const resetZoom = () => setZoom(1);
+
+  const goToNext = useCallback(() => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((selectedIndex + 1) % visuals.length);
+      resetZoom();
+    }
+  }, [selectedIndex, visuals.length]);
+
+  const goToPrev = useCallback(() => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((selectedIndex - 1 + visuals.length) % visuals.length);
+      resetZoom();
+    }
+  }, [selectedIndex, visuals.length]);
+
+  const closeLightbox = useCallback(() => {
+    setSelectedIndex(null);
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (selectedIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") goToNext();
+      else if (e.key === "ArrowLeft") goToPrev();
+      else if (e.key === "Escape") closeLightbox();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedIndex, goToNext, goToPrev, closeLightbox]);
 
   return (
     <section className="mb-12">
@@ -199,7 +238,7 @@ function VisualsSection({ visuals, projectName }: { visuals: string[]; projectNa
                 key={index}
                 className="rounded-lg border overflow-hidden cursor-pointer group relative"
                 onClick={() => {
-                  setSelectedImage(visual);
+                  setSelectedIndex(index);
                   resetZoom();
                 }}
               >
@@ -218,7 +257,7 @@ function VisualsSection({ visuals, projectName }: { visuals: string[]; projectNa
       </Collapsible>
 
       {/* Lightbox Modal */}
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+      <Dialog open={selectedIndex !== null} onOpenChange={() => closeLightbox()}>
         <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-black/95 border-none">
           <div className="relative w-full h-full flex items-center justify-center">
             {/* Controls */}
@@ -242,10 +281,37 @@ function VisualsSection({ visuals, projectName }: { visuals: string[]; projectNa
               <Button
                 variant="secondary"
                 size="icon"
-                onClick={() => setSelectedImage(null)}
+                onClick={closeLightbox}
               >
                 <X className="h-4 w-4" />
               </Button>
+            </div>
+
+            {/* Navigation Arrows */}
+            {visuals.length > 1 && (
+              <>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10"
+                  onClick={goToPrev}
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10"
+                  onClick={goToNext}
+                >
+                  <ArrowLeft className="h-4 w-4 rotate-180" />
+                </Button>
+              </>
+            )}
+
+            {/* Image counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/80 text-sm">
+              {selectedIndex !== null && `${selectedIndex + 1} / ${visuals.length}`}
             </div>
 
             {/* Image */}
