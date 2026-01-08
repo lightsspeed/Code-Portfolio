@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Download } from "lucide-react";
+import { Github, Linkedin, Mail, Download, MapPin, Briefcase, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data/profile";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -11,7 +11,7 @@ export function HeroSection() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      id="hero"
+      id="about"
       className="min-h-screen flex items-center justify-center pt-16"
       aria-label="Introduction"
     >
@@ -23,25 +23,25 @@ export function HeroSection() {
           )}
         >
           {/* Avatar */}
-          <div className="mb-8">
+          <div className="mb-6">
             <img
               src={profilePhoto}
               alt={`${profile.name} profile photo`}
-              className="w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-border object-cover mx-auto"
+              className="w-36 h-36 md:w-40 md:h-40 rounded-full border-2 border-border object-cover mx-auto"
             />
           </div>
 
           {/* Introduction */}
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-3">
             {profile.name}
           </h1>
           <p className="text-xl text-muted-foreground mb-2">{profile.title}</p>
-          <p className="text-muted-foreground max-w-xl mx-auto mb-8">
+          <p className="text-muted-foreground max-w-xl mx-auto mb-6">
             {profile.shortBio}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="flex flex-wrap justify-center gap-4 mb-6">
             <Button asChild>
               <a href="#projects">View Projects</a>
             </Button>
@@ -54,7 +54,7 @@ export function HeroSection() {
           </div>
 
           {/* Social Links */}
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-4 mb-10">
             <a
               href={profile.social.github}
               target="_blank"
@@ -80,6 +80,43 @@ export function HeroSection() {
             >
               <Mail className="h-5 w-5" strokeWidth={1.5} />
             </a>
+          </div>
+
+          {/* About Info Cards */}
+          <div className="grid sm:grid-cols-3 gap-4 text-left mb-8">
+            <div className="flex items-start gap-3 p-4 rounded-lg bg-secondary/30">
+              <MapPin className="h-5 w-5 mt-0.5 text-muted-foreground" strokeWidth={1.5} />
+              <div>
+                <p className="text-sm text-muted-foreground">Location</p>
+                <p className="font-medium">{profile.location}</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-4 rounded-lg bg-secondary/30">
+              <Briefcase className="h-5 w-5 mt-0.5 text-muted-foreground" strokeWidth={1.5} />
+              <div>
+                <p className="text-sm text-muted-foreground">Experience</p>
+                <p className="font-medium">{profile.yearsOfExperience}+ Years</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-4 rounded-lg bg-secondary/30">
+              <Target className="h-5 w-5 mt-0.5 text-muted-foreground" strokeWidth={1.5} />
+              <div>
+                <p className="text-sm text-muted-foreground">Focus</p>
+                <p className="font-medium">{profile.focusAreas[0]}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Focus Areas */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {profile.focusAreas.map((area) => (
+              <span
+                key={area}
+                className="px-3 py-1 text-sm bg-secondary text-secondary-foreground rounded-md"
+              >
+                {area}
+              </span>
+            ))}
           </div>
         </div>
       </div>
