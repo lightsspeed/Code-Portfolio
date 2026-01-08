@@ -5,6 +5,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { profile } from "@/data/profile";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import indianFlag from "@/assets/indian-flag.jpg";
 
 const navLinks = [
   { href: "/#projects", label: "Projects" },
@@ -60,13 +61,11 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="text-lg font-semibold flex items-center gap-2">
             {profile.name}
-            <span className="flex flex-col h-4 w-6 rounded-sm overflow-hidden shadow-sm">
-              <span className="h-1/3 bg-orange-500"></span>
-              <span className="h-1/3 bg-white flex items-center justify-center">
-                <span className="w-1.5 h-1.5 rounded-full border border-blue-900"></span>
-              </span>
-              <span className="h-1/3 bg-green-600"></span>
-            </span>
+            <img 
+              src={indianFlag} 
+              alt="Indian Flag" 
+              className="h-4 w-6 object-cover rounded-sm shadow-sm"
+            />
           </Link>
 
           {/* Desktop Navigation */}
