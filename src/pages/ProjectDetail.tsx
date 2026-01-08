@@ -85,7 +85,7 @@ export default function ProjectDetail() {
               </Button>
             )}
             {project.liveUrl && (
-              <Button asChild className="min-w-[140px] hover:bg-blue-900 hover:shadow-lg hover:shadow-blue-900/50 transition-all duration-300">
+              <Button asChild className="min-w-[140px] hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300">
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Live Demo
