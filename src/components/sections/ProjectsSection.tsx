@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Github, ExternalLink, LayoutPanelTop } from "lucide-react";
+import { Github, ExternalLink, Network } from "lucide-react";
 import { projects, projectCategories, type Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -13,8 +13,14 @@ function ProjectCard({ project }: { project: Project }) {
     >
       <article className="p-6 rounded-lg flex flex-col h-full card-glow gradient-border transition-transform duration-200 group-hover:scale-[1.02]">
         <div className="flex-1">
-          <div className="flex items-start justify-between gap-4 mb-3">
-            <h3 className="font-medium group-hover:text-primary transition-colors">{project.name}</h3>
+          <h3 className="font-medium group-hover:text-primary transition-colors mb-3">{project.name}</h3>
+          <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+          
+          {/* Click for more + icons row */}
+          <div className="flex items-center justify-between mb-4">
+            <p className="text-xs text-primary/70 group-hover:text-primary transition-colors">
+              Click for more details →
+            </p>
             <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
               {project.githubUrl && (
                 <a
@@ -46,15 +52,11 @@ function ProjectCard({ project }: { project: Project }) {
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label={`View ${project.name} architecture`}
                 >
-                  <LayoutPanelTop className="h-4 w-4" strokeWidth={1.5} />
+                  <Network className="h-4 w-4" strokeWidth={1.5} />
                 </a>
               )}
             </div>
           </div>
-          <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-          <p className="text-xs text-primary/70 group-hover:text-primary transition-colors mb-4">
-            Click for more details →
-          </p>
         </div>
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
