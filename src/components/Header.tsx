@@ -61,11 +61,13 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="text-lg font-semibold flex items-center gap-2">
             {profile.name}
-            <img 
-              src={indianFlag} 
-              alt="Indian Flag" 
-              className="h-4 w-6 object-cover rounded-sm shadow-sm"
-            />
+            <span className="flag-shimmer rounded-sm">
+              <img 
+                src={indianFlag} 
+                alt="Indian Flag" 
+                className="h-4 w-6 object-cover rounded-sm shadow-sm"
+              />
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
