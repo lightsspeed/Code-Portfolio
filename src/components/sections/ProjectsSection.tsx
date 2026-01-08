@@ -52,6 +52,9 @@ function ProjectCard({ project }: { project: Project }) {
             </div>
           </div>
           <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+          <p className="text-xs text-primary/70 group-hover:text-primary transition-colors mb-4">
+            Click for more details →
+          </p>
         </div>
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
