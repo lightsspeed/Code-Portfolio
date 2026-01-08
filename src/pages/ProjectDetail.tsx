@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Github, ExternalLink, BookOpen, ChevronDown, X, ZoomIn, ZoomOut } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -34,6 +34,11 @@ export default function ProjectDetail() {
     );
   }
 
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   const scrollToLessons = () => {
     document.getElementById("lessons-learned")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -51,43 +56,43 @@ export default function ProjectDetail() {
             </Link>
           </Button>
 
-          {/* Title & Lessons Button */}
-          <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
-            <h1 className="text-3xl md:text-4xl font-bold">{project.name}</h1>
-            {project.lessonsLearned && project.lessonsLearned.length > 0 && (
-              <Button variant="outline" size="sm" onClick={scrollToLessons}>
-                <BookOpen className="mr-2 h-4 w-4" />
-                Lessons Learned
-              </Button>
-            )}
-          </div>
+          {/* Title */}
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">{project.name}</h1>
 
           {/* Hook */}
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed text-justify">
             {project.hook || project.description}
           </p>
 
-          {/* GitHub & Live Demo Buttons */}
-          {(project.githubUrl || project.liveUrl) && (
-            <div className="flex gap-4 mb-8 flex-wrap">
-              {project.githubUrl && (
-                <Button asChild>
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" />
-                    View on GitHub
-                  </a>
-                </Button>
-              )}
-              {project.liveUrl && (
-                <Button asChild variant="outline">
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Live Demo
-                  </a>
-                </Button>
-              )}
-            </div>
-          )}
+          {/* Action Buttons - All in one line, same size */}
+          <div className="flex gap-4 mb-8 flex-wrap">
+            {project.lessonsLearned && project.lessonsLearned.length > 0 && (
+              <Button 
+                variant="outline" 
+                onClick={scrollToLessons}
+                className="hover:border-orange-500 hover:text-orange-500 transition-colors min-w-[140px]"
+              >
+                <BookOpen className="mr-2 h-4 w-4" />
+                Lessons Learned
+              </Button>
+            )}
+            {project.githubUrl && (
+              <Button asChild className="min-w-[140px]">
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <Github className="mr-2 h-4 w-4" />
+                  View on GitHub
+                </a>
+              </Button>
+            )}
+            {project.liveUrl && (
+              <Button asChild variant="outline" className="min-w-[140px]">
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Live Demo
+                </a>
+              </Button>
+            )}
+          </div>
 
           {/* Tech Stack */}
           <section className="mb-12">
@@ -175,13 +180,107 @@ export default function ProjectDetail() {
 
 // Visuals Section Component with Collapsible and Lightbox
 function VisualsSection({ visuals, projectName }: { visuals: string[]; projectName: string }) {
-  const [isOpen, setIsOpen] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [zoom, setZoom] = useState(1);
+
+  const selectedImage = selectedIndex !== null ? visuals[selectedIndex] : null;
 
   const handleZoomIn = () => setZoom((z) => Math.min(z + 0.25, 3));
   const handleZoomOut = () => setZoom((z) => Math.max(z - 0.25, 0.5));
   const resetZoom = () => setZoom(1);
+
+  const goToNext = useCallback(() => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((selectedIndex + 1) % visuals.length);
+      resetZoom();
+    }
+  }, [selectedIndex, visuals.length]);
+
+  const goToPrev = useCallback(() => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((selectedIndex - 1 + visuals.length) % visuals.length);
+      resetZoom();
+    }
+  }, [selectedIndex, visuals.length]);
+
+  const closeLightbox = useCallback(() => {
+    setSelectedIndex(null);
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (selectedIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") goToNext();
+      else if (e.key === "ArrowLeft") goToPrev();
+      else if (e.key === "Escape") closeLightbox();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedIndex, goToNext, goToPrev, closeLightbox]);
+
+  // Touch/swipe navigation
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+  const minSwipeDistance = 50;
+
+  // Pinch-to-zoom
+  const initialPinchDistance = useRef<number | null>(null);
+  const initialZoom = useRef<number>(1);
+
+  const getDistance = (touches: React.TouchList) => {
+    if (touches.length < 2) return null;
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      // Pinch start
+      initialPinchDistance.current = getDistance(e.touches);
+      initialZoom.current = zoom;
+    } else if (e.touches.length === 1) {
+      // Swipe start
+      touchStartX.current = e.touches[0].clientX;
+      touchEndX.current = null;
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 2 && initialPinchDistance.current) {
+      // Pinch move
+      const currentDistance = getDistance(e.touches);
+      if (currentDistance) {
+        const scale = currentDistance / initialPinchDistance.current;
+        const newZoom = Math.min(Math.max(initialZoom.current * scale, 0.5), 3);
+        setZoom(newZoom);
+      }
+    } else if (e.touches.length === 1) {
+      // Swipe move
+      touchEndX.current = e.touches[0].clientX;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    // Handle swipe end
+    if (touchStartX.current && touchEndX.current) {
+      const distance = touchStartX.current - touchEndX.current;
+      const isLeftSwipe = distance > minSwipeDistance;
+      const isRightSwipe = distance < -minSwipeDistance;
+
+      if (isLeftSwipe) goToNext();
+      else if (isRightSwipe) goToPrev();
+    }
+
+    // Reset refs
+    touchStartX.current = null;
+    touchEndX.current = null;
+    initialPinchDistance.current = null;
+  };
 
   return (
     <section className="mb-12">
@@ -199,7 +298,7 @@ function VisualsSection({ visuals, projectName }: { visuals: string[]; projectNa
                 key={index}
                 className="rounded-lg border overflow-hidden cursor-pointer group relative"
                 onClick={() => {
-                  setSelectedImage(visual);
+                  setSelectedIndex(index);
                   resetZoom();
                 }}
               >
@@ -218,9 +317,14 @@ function VisualsSection({ visuals, projectName }: { visuals: string[]; projectNa
       </Collapsible>
 
       {/* Lightbox Modal */}
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+      <Dialog open={selectedIndex !== null} onOpenChange={() => closeLightbox()}>
         <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-black/95 border-none">
-          <div className="relative w-full h-full flex items-center justify-center">
+          <div 
+            className="relative w-full h-full flex items-center justify-center"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Controls */}
             <div className="absolute top-4 right-4 z-10 flex gap-2">
               <Button
@@ -242,10 +346,37 @@ function VisualsSection({ visuals, projectName }: { visuals: string[]; projectNa
               <Button
                 variant="secondary"
                 size="icon"
-                onClick={() => setSelectedImage(null)}
+                onClick={closeLightbox}
               >
                 <X className="h-4 w-4" />
               </Button>
+            </div>
+
+            {/* Navigation Arrows */}
+            {visuals.length > 1 && (
+              <>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10"
+                  onClick={goToPrev}
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10"
+                  onClick={goToNext}
+                >
+                  <ArrowLeft className="h-4 w-4 rotate-180" />
+                </Button>
+              </>
+            )}
+
+            {/* Image counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/80 text-sm">
+              {selectedIndex !== null && `${selectedIndex + 1} / ${visuals.length}`}
             </div>
 
             {/* Image */}
