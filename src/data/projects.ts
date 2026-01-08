@@ -123,7 +123,7 @@ export const projects: Project[] = [
   category: "serverless",
   githubUrl: "https://github.com/lightsspeed/QR_Lambda",
   liveUrl: "https://qr.deployone.cloud",
-  architectureUrl: "/public/architecture/QRCode.png"
+  architectureUrl: "/Architecture/QRCode.png"
 }
 
 ];
