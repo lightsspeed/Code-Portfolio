@@ -18,9 +18,9 @@ export default function Blogs() {
     <div className="min-h-screen bg-background">
       <Header />
       <main className="container mx-auto px-4 md:px-6 py-20 md:py-24">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           {/* Back Button */}
-          <Button asChild variant="ghost" size="sm" className="mb-8">
+          <Button asChild variant="ghost" size="sm" className="mb-6">
             <Link to="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Home
@@ -28,59 +28,60 @@ export default function Blogs() {
           </Button>
 
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-2xl md:text-3xl font-bold mb-2">
             Blogs written by {profile.name.replace(".", " ")}
           </h1>
-          <p className="text-lg text-muted-foreground mb-12 text-justify">
+          <p className="text-sm text-muted-foreground mb-8 text-justify">
             Thoughts, tutorials, and insights on DevOps, cloud infrastructure, and automation.
           </p>
 
           {/* Blog List */}
-          <div className="space-y-8">
+          <div className="space-y-4">
             {sortedBlogs.map((post) => (
               <article
                 key={post.id}
-                className="p-6 rounded-lg border bg-card hover:bg-muted/30 transition-colors"
+                className="p-4 rounded-lg border bg-card hover:bg-muted/30 transition-colors"
               >
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
+                      <Calendar className="h-3 w-3" />
                       {new Date(post.date).toLocaleDateString("en-US", {
                         year: "numeric",
-                        month: "long",
+                        month: "short",
                         day: "numeric",
                       })}
                     </span>
                     <span className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
+                      <Clock className="h-3 w-3" />
                       {post.readTime}
                     </span>
                   </div>
 
-                  <h2 className="text-xl font-semibold">{post.title}</h2>
-                  <p className="text-muted-foreground text-justify">{post.excerpt}</p>
+                  <h2 className="text-base font-semibold">{post.title}</h2>
+                  <p className="text-sm text-muted-foreground text-justify line-clamp-2">{post.excerpt}</p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
+                  <div className="flex items-center justify-between gap-2 mt-1">
+                    <div className="flex flex-wrap gap-1">
+                      {post.tags.slice(0, 3).map((tag) => (
+                        <Badge key={tag} variant="secondary" className="text-xs px-2 py-0">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
 
-                  {post.mediumUrl && (
-                    <Button asChild variant="outline" size="sm" className="w-fit">
+                    {post.mediumUrl && (
                       <a
                         href={post.mediumUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="text-xs text-primary hover:underline flex items-center gap-1"
                       >
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Read on Medium
+                        Read more
+                        <ExternalLink className="h-3 w-3" />
                       </a>
-                    </Button>
-                  )}
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
