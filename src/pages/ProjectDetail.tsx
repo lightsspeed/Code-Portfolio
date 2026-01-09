@@ -68,16 +68,16 @@ export default function ProjectDetail() {
           <div className="flex gap-4 mb-8 flex-wrap">
             {project.lessonsLearned && project.lessonsLearned.length > 0 && (
               <Button 
-                variant="outline" 
+                variant="default" 
                 onClick={scrollToLessons}
-                className="hover:border-orange-500 hover:text-orange-500 transition-colors min-w-[140px]"
+                className="min-w-[140px] hover:border-orange-500 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/40 transition-all duration-300"
               >
                 <BookOpen className="mr-2 h-4 w-4" />
                 Lessons Learned
               </Button>
             )}
             {project.githubUrl && (
-              <Button asChild className="min-w-[140px]">
+              <Button asChild className="min-w-[140px] hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-400/50 transition-all duration-300">
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-4 w-4" />
                   View on GitHub
@@ -85,7 +85,7 @@ export default function ProjectDetail() {
               </Button>
             )}
             {project.liveUrl && (
-              <Button asChild variant="outline" className="min-w-[140px]">
+              <Button asChild className="min-w-[140px] hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300">
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Live Demo
