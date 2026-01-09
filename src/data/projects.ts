@@ -114,7 +114,14 @@ export const projects: Project[] = [
   category: "infrastructure",
   githubUrl: "https://github.com/lightsspeed/Infra-Portfolio",
   liveUrl: "https://deployone.cloud",
-  architectureUrl: "https://github.com/lightsspeed/Infra-Portfolio/blob/main/Assets/Infra-Portfolio.png"
+  architectureUrl: "/projects/portfolio/infraportfolio.png",
+  // Add these optional fields for richer detail pages:
+  hook: "Host your static website securely and efficiently on AWS with automated deployments!",
+  problem: "Need a reliable and secure way to host a static website with custom domain and HTTPS?",
+  solution: "Utilize AWS services like S3, CloudFront, Route53, and ACM to create a robust static website hosting solution, automated with Terraform and GitHub Actions.",
+  keyFeatures: ["Secure S3 bucket for content storage", "CloudFront CDN for fast content delivery", "Custom domain with Route53", "Automated HTTPS with ACM", "CI/CD pipeline with GitHub Actions"],
+  lessonsLearned: ["Infrastructure as Code with Terraform enhances reproducibility and version control.", "Integrating multiple AWS services requires careful planning and configuration.", "Automating deployments reduces manual errors and speeds up updates.", "Security best practices are crucial for public-facing websites.", "Monitoring and logging are essential for maintaining website performance."],
+  visuals: ["/projects/portfolio/s3_1.png", "/projects/portfolio/s3_2.png","/projects/portfolio/CF_1.png","/projects/portfolio/ACM.png"],
 },
 {
   id: "11",
