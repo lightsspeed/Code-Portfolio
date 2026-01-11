@@ -21,41 +21,41 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "1",
-    name: "K8s Cluster Autoscaler",
+    name: "Secure CI/CD Pipeline with DevSecOps Integration",
     description:
-      "Custom Kubernetes autoscaler that optimizes cluster resources based on workload patterns and cost efficiency.",
-    techStack: ["Kubernetes", "Go", "Prometheus", "AWS"],
-    category: "infrastructure",
+      "A CI/CD pipeline that integrates security scanning tools at each stage to ensure code quality and compliance.",
+    techStack: ["GitHub Actions", "SonarQube", "Snyk", "Docker", "Kubernetes"],
+    category: "cicd",
     githubUrl: "https://github.com",
     architectureUrl: "https://example.com/architecture",
   },
   {
     id: "2",
-    name: "GitOps Pipeline Framework",
+    name: "Kubernetes Cluster with Helm Charts & Ingress",
     description:
-      "End-to-end GitOps implementation using ArgoCD with automated rollbacks and multi-environment support.",
-    techStack: ["ArgoCD", "Helm", "GitHub Actions", "Terraform"],
-    category: "automation",
+      "Automated deployment of a highly available Kubernetes cluster using Helm charts and Traefik for traffic management.",
+    techStack: ["Kubernetes", "Helm", "Traefik", "Terraform", "AWS"],
+    category: "infrastructure",
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
   },
   {
     id: "3",
-    name: "Infrastructure Monitoring Stack",
+    name: "GitOps with ArgoCD for Continuous Deployment",
     description:
-      "Comprehensive monitoring solution with custom dashboards, alerting rules, and incident management integration.",
-    techStack: ["Prometheus", "Grafana", "Alertmanager", "PagerDuty"],
+      "Implementing GitOps practices using ArgoCD to automate application deployments and manage Kubernetes configurations from a Git repository.",
+    techStack: ["ArgoCD", "Kubernetes", "GitHub", "YAML", "Prometheus"],
     category: "monitoring",
     githubUrl: "https://github.com",
     architectureUrl: "https://example.com/architecture",
   },
   {
     id: "4",
-    name: "Terraform Module Library",
+    name: "Full Observability Stack with SLOs & Alerting",
     description:
-      "Reusable Terraform modules for AWS infrastructure including VPC, EKS, RDS, and security configurations.",
-    techStack: ["Terraform", "AWS", "Python", "Terratest"],
-    category: "infrastructure",
+      "Comprehensive observability solution using Prometheus, Grafana, and Loki to monitor applications, define SLOs, and set up alerting mechanisms.",
+    techStack: ["Prometheus", "Grafana", "Loki", "Alertmanager", "Tempo", "Kubernetes"],
+    category: "monitoring",
     githubUrl: "https://github.com",
   },
   {
@@ -70,11 +70,11 @@ export const projects: Project[] = [
   },
   {
     id: "6",
-    name: "CI Pipeline Optimizer",
+    name: "Blue-Green / Canary Deployment Strategy",
     description:
-      "Tool that analyzes CI pipelines and suggests optimizations for faster build times and reduced costs.",
-    techStack: ["Python", "GitHub Actions", "Docker", "PostgreSQL"],
-    category: "automation",
+      "Implementation of blue-green and canary deployment strategies to minimize downtime and reduce risk during application updates.",
+    techStack: ["Argo Rollouts", "Kubernetes", "Istio", "Helm"],
+    category: "cicd",
     githubUrl: "https://github.com",
   },
   {
@@ -82,17 +82,17 @@ export const projects: Project[] = [
     name: "Multi-Cloud CI/CD Platform",
     description:
       "Unified CI/CD platform supporting deployments across AWS, Azure, and GCP with centralized pipeline management.",
-    techStack: ["Jenkins", "Terraform", "Docker", "Kubernetes"],
+    techStack: ["GitHub Actions", "Terraform", "Docker", "Kubernetes"],
     category: "cicd",
     githubUrl: "https://github.com",
   },
   {
     id: "8",
-    name: "GitHub Actions Workflow Library",
+    name: "Multi-Cloud Infrastructure with Terraform",
     description:
-      "Reusable GitHub Actions workflows for testing, building, and deploying applications with best practices.",
-    techStack: ["GitHub Actions", "YAML", "Docker", "Node.js"],
-    category: "cicd",
+      "Provisioning and managing infrastructure across AWS, Azure, and GCP using Terraform for consistent and repeatable deployments.",
+    techStack: ["Terraform", "AWS", "Azure", "GCP", "Python"],
+    category: "infrastructure",
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
   },
