@@ -26,8 +26,15 @@ export const projects: Project[] = [
       "A CI/CD pipeline that integrates security scanning tools at each stage to ensure code quality and compliance.",
     techStack: ["GitHub Actions", "SonarQube", "Snyk", "Docker", "Kubernetes"],
     category: "cicd",
-    githubUrl: "https://github.com",
-    architectureUrl: "https://example.com/architecture",
+    githubUrl: "https://github.com/lightsspeed/Code-Portfolio/blob/main/.github/workflows/deploy.yml",
+    // architectureUrl: "https://example.com/architecture",
+      // Add these optional fields for richer detail pages:
+  hook: "CICD pipeline with built in security checks to ensure code quality and compliance!",
+  problem: "Need a reliable CI/CD pipeline that incorporates security best practices throughout the development lifecycle?",
+  solution: "Implement a CI/CD pipeline using GitHub Actions that integrates security scanning tools like SonarQube and Snyk at various stages to catch vulnerabilities early.",
+  keyFeatures: ["Automated builds and tests", "Security scanning with SonarQube", "Vulnerability detection with Snyk", "Containerization with Docker", "Deployment to Kubernetes"],
+  lessonsLearned: ["Integrating security tools into CI/CD pipelines enhances code quality and reduces vulnerabilities.", "Automated testing is crucial for maintaining application stability.", "Containerization simplifies deployment and scaling.", "Kubernetes provides a robust platform for managing containerized applications.", "Continuous monitoring and feedback loops improve development processes."],
+  // visuals: ["/projects/portfolio/s3_1.png", "/projects/portfolio/s3_2.png","/projects/portfolio/CF_1.png","/projects/portfolio/ACM.png"]
   },
   {
     id: "2",
@@ -121,7 +128,7 @@ export const projects: Project[] = [
   solution: "Utilize AWS services like S3, CloudFront, Route53, and ACM to create a robust static website hosting solution, automated with Terraform and GitHub Actions.",
   keyFeatures: ["Secure S3 bucket for content storage", "CloudFront CDN for fast content delivery", "Custom domain with Route53", "Automated HTTPS with ACM", "CI/CD pipeline with GitHub Actions"],
   lessonsLearned: ["Infrastructure as Code with Terraform enhances reproducibility and version control.", "Integrating multiple AWS services requires careful planning and configuration.", "Automating deployments reduces manual errors and speeds up updates.", "Security best practices are crucial for public-facing websites.", "Monitoring and logging are essential for maintaining website performance."],
-  visuals: ["/projects/portfolio/s3_1.png", "/projects/portfolio/s3_2.png","/projects/portfolio/CF_1.png","/projects/portfolio/ACM.png"],
+  visuals: ["/projects/portfolio/s3_1.png", "/projects/portfolio/s3_2.png","/projects/portfolio/CF_1.png","/projects/portfolio/ACM.png"]
 },
 {
   id: "11",
