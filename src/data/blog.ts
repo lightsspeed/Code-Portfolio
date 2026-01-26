@@ -60,7 +60,7 @@ export const blogPosts: BlogPost[] = [
 
   {
     id: "5",
-    title: "10 Best Practices for Linux That'll Save Your Sanity And Your Server",
+    title: "!!! LATEST: 10 Best Practices for Linux That'll Save Your Sanity !!!",
     excerpt:
       "Discover essential Linux best practices to streamline your Linux environment, improve security, and enhance productivity.",
     date: "2026-01-26",
