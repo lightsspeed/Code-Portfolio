@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "3 min read",
     tags: ["CI/CD", "GitHub Actions", "Automation"],
     slug: "scalable-cicd-github-actions",
-    mediumUrl:"https://medium.com/@akhileshchoure1/building-scalable-ci-cd-pipelines-with-github-actions-from-basics-to-pro-tips-6b57f2ac554a"
+    mediumUrl: "https://medium.com/@akhileshchoure1/building-scalable-ci-cd-pipelines-with-github-actions-from-basics-to-pro-tips-6b57f2ac554a"
   },
 
   {
@@ -31,7 +31,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     tags: ["Scripting"],
     slug: "python-vs-bash-devops",
-    mediumUrl:"https://medium.com/@akhileshchoure1/when-to-use-python-vs-bash-for-devops-scripting-772ab12ebda3"
+    mediumUrl: "https://medium.com/@akhileshchoure1/when-to-use-python-vs-bash-for-devops-scripting-772ab12ebda3"
   },
 
   {
@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "3 min read",
     tags: ["AWS", "EC2", "VS Code", "Remote Development"],
     slug: "ssh-aws-ec2-vscode",
-    mediumUrl:"https://medium.com/@akhileshchoure1/how-to-ssh-into-your-aws-ec2-instance-and-develop-directly-in-vs-code-a-complete-guide-3cedf924a276"
+    mediumUrl: "https://medium.com/@akhileshchoure1/how-to-ssh-into-your-aws-ec2-instance-and-develop-directly-in-vs-code-a-complete-guide-3cedf924a276"
   },
 
   {
@@ -53,9 +53,21 @@ export const blogPosts: BlogPost[] = [
       "Discover essential Terraform best practices to streamline your infrastructure as code, improve collaboration, and ensure reliable deployments in your DevOps workflows.",
     date: "2026-01-08",
     readTime: "5 min read",
-    tags: ["Terraform", "Infrastructure as Code", "DevOps", "Best Practices","AWS"],
+    tags: ["Terraform", "Infrastructure as Code", "DevOps", "Best Practices", "AWS"],
     slug: "terraform-best-practices",
-    mediumUrl:"https://medium.com/@akhileshchoure1/10-best-practices-for-terraform-from-chaos-to-infrastructure-as-code-zen-f83242f39695"
+    mediumUrl: "https://medium.com/@akhileshchoure1/10-best-practices-for-terraform-from-chaos-to-infrastructure-as-code-zen-f83242f39695"
+  },
+
+  {
+    id: "5",
+    title: "10 Best Practices for Linux That’ll Save Your Sanity (And Your Server)",
+    excerpt:
+      "Discover essential Linux best practices to streamline your Linux environment, improve security, and enhance productivity.",
+    date: "2026-01-08",
+    readTime: "5 min read",
+    tags: ["Linux", "Infrastructure as Code", "DevOps", "Best Practices", "AWS"],
+    slug: "linux-best-practices",
+    mediumUrl: "https://medium.com/@akhileshchoure1/10-best-practices-for-linux-thatll-save-your-sanity-and-your-server-e63628c824ab"
   }
 
 ];
