@@ -63,8 +63,8 @@ export const blogPosts: BlogPost[] = [
     title: "10 Best Practices for Linux That’ll Save Your Sanity (And Your Server)",
     excerpt:
       "Discover essential Linux best practices to streamline your Linux environment, improve security, and enhance productivity.",
-    date: "2026-01-08",
-    readTime: "5 min read",
+    date: "2026-01-26",
+    readTime: "11 min read",
     tags: ["Linux", "Infrastructure as Code", "DevOps", "Best Practices", "AWS"],
     slug: "linux-best-practices",
     mediumUrl: "https://medium.com/@akhileshchoure1/10-best-practices-for-linux-thatll-save-your-sanity-and-your-server-e63628c824ab"
