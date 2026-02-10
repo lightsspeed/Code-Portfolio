@@ -137,8 +137,8 @@ export const projects: Project[] = [
     "Serverless QR Code Generator using AWS Lambda, API Gateway, and Amplify: Generates QR codes on-demand with a user-friendly web interface, leveraging serverless architecture for scalability and cost-efficiency.",
   techStack: ["AWS Lambda", "API Gateway", "AWS Amplify", "Python","Javascript", "CICD"],
   category: "serverless",
-  githubUrl: "https://github.com/lightsspeed/QR_Lambda",
-  liveUrl: "https://qr.deployone.cloud",
+  githubUrl: "https://github.com/lightsspeed/quick-qr-creator.git",
+  liveUrl: "https://utils.deployone.cloud",
   architectureUrl: "/projects/qr/QRCode.png",
   // Add these optional fields for richer detail pages:
   hook: "Generate QR codes instantly with our serverless solution!",
