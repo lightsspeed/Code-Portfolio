@@ -105,12 +105,32 @@ export const projects: Project[] = [
   },
   {
     id: "9",
-    name: "GitLab CI Pipeline Templates",
+    name: "Multi-Region DR Pipeline Project",
     description:
-      "Standardized GitLab CI templates for microservices with automated testing, security scanning, and deployment.",
-    techStack: ["GitLab CI", "Docker", "Kubernetes", "Trivy"],
-    category: "cicd",
-    githubUrl: "https://github.com",
+      "Design and implementation of a multi-region disaster recovery pipeline to ensure high availability and business continuity in case of regional failures.",
+    techStack: ["Terraform", "AWS", "Route53", "S3"],
+    category: "infrastructure",
+    githubUrl: "https://github.com/lightsspeed/Multi-Region-DR-Pipeline",
+    architectureUrl: "/projects/dr-pipeline/architecture.png",
+  // Add these optional fields for richer detail pages:
+    hook: "Ensure business continuity with an automated, multi-region disaster recovery pipeline on AWS!",
+    problem: "How can we design a robust disaster recovery solution that guarantees high availability, minimizes data loss, and ensures rapid automated failover during a complete regional outage?",
+    solution: "Implement an Active-Passive multi-region architecture using AWS Application Load Balancers, Auto Scaling Groups, and asynchronous cross-region RDS MySQL replication, entirely orchestrated by Terraform and Route 53 DNS failover.",
+    keyFeatures: [
+    "Active-Passive compute infrastructure provisioned across multiple AWS regions using Terraform", 
+    "Continuous, asynchronous cross-region database replication with Amazon RDS", 
+    "Automated DNS routing and failover mechanics triggered by Route 53 health checks", 
+    "High-availability compute layout utilizing ALB and Auto Scaling Groups in private subnets", 
+    "Custom Python and PowerShell automation scripts for disaster simulation and RTO/RPO validation"
+  ],
+    lessonsLearned: [
+    "Simulating real disaster events is critical to validating true RTO (Recovery Time Objective) and RPO (Recovery Point Objective) metrics.", 
+    "Infrastructure as Code drastically reduces the complexity of maintaining identical environments across multiple global regions.", 
+    "Automated Application Load Balancer health checks provide the most reliable trigger for global DNS failover.", 
+    "Cross-region database replication requires careful configuration of VPC networking and cross-region security group rules.", 
+    "Proper network isolation using public and private subnets is essential for securing database and compute tiers in a highly available architecture."
+  ],
+    visuals: ["public/projects/dr-pipeline/RDS Primary.jpg", "public/projects/dr-pipeline/RDS Sec.jpg", "public/projects/dr-pipeline/HealthChecksR53.jpg", "public/projects/dr-pipeline/HealthCheckR53_1.jpg"],
   },
   {
   id: "10",
