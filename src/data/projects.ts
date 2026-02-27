@@ -130,7 +130,7 @@ export const projects: Project[] = [
     "Cross-region database replication requires careful configuration of VPC networking and cross-region security group rules.", 
     "Proper network isolation using public and private subnets is essential for securing database and compute tiers in a highly available architecture."
   ],
-    visuals: ["public/projects/dr-pipeline/RDS Primary.jpg", "public/projects/dr-pipeline/RDS Sec.jpg", "public/projects/dr-pipeline/HealthChecksR53.jpg", "public/projects/dr-pipeline/HealthCheckR53_1.jpg"],
+    visuals: ["/projects/dr-pipeline/RDS Primary.jpg", "/projects/dr-pipeline/RDS Sec.jpg", "/projects/dr-pipeline/HealthChecksR53.jpg", "/projects/dr-pipeline/HealthCheckR53_1.jpg"],
   },
   {
   id: "10",
