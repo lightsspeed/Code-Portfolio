@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Github, ExternalLink, BookOpen, ChevronDown, X, ZoomIn, ZoomOut } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink, BookOpen, ChevronDown, X, ZoomIn, ZoomOut, Trophy } from "lucide-react";
 import { projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
@@ -143,6 +143,26 @@ export default function ProjectDetail() {
               </div>
             </div>
           </section>
+
+          {/* Achievements */}
+          {project.achievements && project.achievements.length > 0 && (
+            <section className="mb-12">
+              <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <Trophy className="h-5 w-5 text-yellow-500" />
+                Key Achievements
+              </h2>
+              <div className="grid gap-3">
+                {project.achievements.map((achievement, index) => (
+                  <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-emerald-500/5 border-emerald-500/20">
+                    <div className="h-6 w-6 rounded-full bg-emerald-500/20 text-emerald-600 flex items-center justify-center shrink-0 text-xs font-bold">
+                      {index + 1}
+                    </div>
+                    <p className="text-muted-foreground text-justify leading-relaxed">{achievement}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Key Features */}
           <section className="mb-12">
