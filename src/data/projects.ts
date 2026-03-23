@@ -177,7 +177,7 @@ export const projects: Project[] = [
       "Implementation of advanced deployment strategies to minimize downtime and reduce risk during high-stakes application updates.",
     techStack: ["Argo Rollouts", "Kubernetes", "Istio", "Helm"],
     category: "cicd",
-    githubUrl: "https://github.com/lightsspeed",
+    githubUrl: "https://github.com/lightsspeed/story-weaver/tree/main/k8s/strategies",
     hook: "Deployment should be a non-event. Eliminate risk and ensure user stability with advanced traffic-splitting strategies.",
     problem: "Big-bang deployments often lead to service interruptions and a high stress 'all-hands-on-deck' culture during releases.",
     solution: "Utilizing Argo Rollouts and Istio for sophisticated deployment patterns like Canary and Blue-Green with automated analysis.",
