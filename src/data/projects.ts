@@ -333,7 +333,7 @@ export const projects: Project[] = [
     techStack: ["AWS Lambda", "API Gateway", "AWS Amplify", "Python", "Javascript", "CICD"],
     category: "serverless",
     githubUrl: "https://github.com/lightsspeed/quick-qr-creator.git",
-    liveUrl: "https://utils.deployone.cloud",
+    liveUrl: "https://utilfy.deployone.cloud/",
     architectureUrl: "/projects/qr/QRCode.png",
     hook: "Generate QR codes instantly with 100% serverless power. Build fast, pay less, and never manage a server again.",
     problem: "Paying for an always-on server to handle occasional, event-driven tasks like code generation is inefficient and expensive.",
