@@ -140,6 +140,7 @@ export const projects: Project[] = [
       "Provided 99.9% uptime visibility across a fleet of 50+ microservices."
     ]
   },
+/*
   {
     id: "5",
     name: "Secret Management System",
@@ -170,6 +171,7 @@ export const projects: Project[] = [
       "Reduced credential leak risk to near-zero with dynamic service account tokens."
     ]
   },
+*/
   {
     id: "6",
     name: "Blue-Green / Canary Deployment Strategy",
@@ -200,6 +202,7 @@ export const projects: Project[] = [
       "Increased deployment frequency by 2x by empowering developers with safe rollouts."
     ]
   },
+/*
   {
     id: "7",
     name: "Multi-Cloud CI/CD Platform",
@@ -260,6 +263,7 @@ export const projects: Project[] = [
       "Reduced new environment provisioning time from 2 weeks to under 30 minutes."
     ]
   },
+*/
   {
     id: "9",
     name: "Multi-Region DR Pipeline Project",
