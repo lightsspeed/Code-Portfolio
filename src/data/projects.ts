@@ -5,7 +5,7 @@ export type Project = {
   name: string;
   description: string;
   techStack: string[];
-  category: "infrastructure" | "automation" | "monitoring" | "security" | "cicd" | "serverless";
+  category: "infrastructure" | "automation" | "monitoring" | "security" | "cicd" | "serverless" | "ai";
   githubUrl?: string;
   liveUrl?: string;
   architectureUrl?: string;
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     description:
       "A state-of-the-art Retrieval-Augmented Generation (RAG) platform designed for complex document reasoning, enterprise-grade monitoring, and seamless multi-agent collaboration.",
     techStack: ["FastAPI", "React", "Groq", "LangChain", "ChromaDB", "PostgreSQL", "Redis", "Docker", "Kubernetes", "Prometheus", "Grafana"],
-    category: "automation",
+    category: "ai",
     githubUrl: "https://github.com/lightsspeed/Rag_2026",
     hook: "Beyond simple search—intelligent reasoning. KnowledgeFlow AI turns static documents into a collaborative multi-agent knowledge ecosystem.",
     problem: "Enterprises struggle with 'hallucinations' and lack of context in standard LLMs, making it difficult to extract reliable insights from vast, complex document silos.",
@@ -402,6 +402,7 @@ export const projectCategories = [
   { value: "monitoring", label: "Monitoring" },
   { value: "security", label: "Security" },
   { value: "cicd", label: "CI/CD" },
-  { value: "serverless", label: "Serverless" }
+  { value: "serverless", label: "Serverless" },
+  { value: "ai", label: "AI" }
 ];
 
