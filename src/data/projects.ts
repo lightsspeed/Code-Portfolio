@@ -22,6 +22,37 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "1",
+    name: "KnowledgeFlow AI: Advanced RAG Multi-Agent System",
+    description:
+      "A state-of-the-art Retrieval-Augmented Generation (RAG) platform designed for complex document reasoning, enterprise-grade monitoring, and seamless multi-agent collaboration.",
+    techStack: ["FastAPI", "React", "Groq", "LangChain", "ChromaDB", "PostgreSQL", "Redis", "Docker", "Kubernetes", "Prometheus", "Grafana"],
+    category: "automation",
+    githubUrl: "https://github.com/lightsspeed/Rag_2026",
+    hook: "Beyond simple search—intelligent reasoning. KnowledgeFlow AI turns static documents into a collaborative multi-agent knowledge ecosystem.",
+    problem: "Enterprises struggle with 'hallucinations' and lack of context in standard LLMs, making it difficult to extract reliable insights from vast, complex document silos.",
+    solution: "A multi-agent RAG system that uses orchestrated reasoning, hybrid search, and vision capabilities to provide high-accuracy, context-aware answers with full observability.",
+    keyFeatures: [
+      "Multi-Agent Reasoning for complex planning and evaluation",
+      "Advanced RAG with hybrid search and context-aware retrieval",
+      "Enterprise-grade monitoring with Prometheus and Grafana",
+      "Support for Vision analysis and real-time Web Search",
+      "Production-ready security with JWT and rate limiting",
+      "Asynchronous FastAPI core with Redis caching for scale"
+    ],
+    lessonsLearned: [
+      "Multi-agent orchestration significantly reduces hallucination rates in complex RAG flows.",
+      "Hybrid search (semantic + keyword) is essential for handling diverse enterprise document types.",
+      "Real-time observability is the only way to tune RAG performance effectively in production.",
+      "Asynchronous processing is critical when dealing with high-latency LLM API calls."
+    ],
+    achievements: [
+      "Achieved 95% retrieval accuracy on complex technical documentation sets.",
+      "Reduced response latency by 40% through intelligent Redis caching strategies.",
+      "Successfully deployed on Kubernetes with automated scaling and monitoring."
+    ]
+  },
+  {
+    id: "2",
     name: "Secure CI/CD Pipeline with DevSecOps Integration",
     description:
       "A production-grade CI/CD pipeline integrating automated security gates, vulnerability scanning, and compliance checks at every stage.",
@@ -51,7 +82,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "2",
+    id: "3",
     name: "Kubernetes Cluster with Helm Charts & Ingress",
     description:
       "Automated deployment of a highly available Kubernetes cluster using Helm charts and Traefik for traffic management.",
@@ -81,7 +112,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "3",
+    id: "4",
     name: "GitOps with ArgoCD for Continuous Deployment",
     description:
       "Implementing GitOps practices using ArgoCD to automate application deployments and manage Kubernetes configurations from a Git repository.",
@@ -111,7 +142,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "4",
+    id: "5",
     name: "Full Observability Stack with SLOs & Alerting",
     description:
       "Comprehensive observability solution using Prometheus, Grafana, and Loki to monitor applications, define SLOs, and set up alerting mechanisms.",
@@ -142,7 +173,7 @@ export const projects: Project[] = [
   },
 /*
   {
-    id: "5",
+    id: "6",
     name: "Secret Management System",
     description:
       "Centralized secrets management using HashiCorp Vault with automated rotation and audit logging.",
@@ -173,7 +204,7 @@ export const projects: Project[] = [
   },
 */
   {
-    id: "6",
+    id: "7",
     name: "Blue-Green / Canary Deployment Strategy",
     description:
       "Implementation of advanced deployment strategies to minimize downtime and reduce risk during high-stakes application updates.",
@@ -204,7 +235,7 @@ export const projects: Project[] = [
   },
 /*
   {
-    id: "7",
+    id: "8",
     name: "Multi-Cloud CI/CD Platform",
     description:
       "Unified CI/CD platform supporting deployments across AWS, Azure, and GCP with centralized pipeline management.",
@@ -234,7 +265,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "8",
+    id: "9",
     name: "Multi-Cloud Infrastructure with Terraform",
     description:
       "Provisioning and managing infrastructure across AWS, Azure, and GCP using Terraform for consistent and repeatable deployments.",
@@ -265,7 +296,7 @@ export const projects: Project[] = [
   },
 */
   {
-    id: "9",
+    id: "10",
     name: "Multi-Region DR Pipeline Project",
     description:
       "Design and implementation of a multi-region disaster recovery pipeline to ensure high availability and business continuity in case of regional failures.",
@@ -297,7 +328,7 @@ export const projects: Project[] = [
     visuals: ["/projects/dr-pipeline/RDS Primary.jpg", "/projects/dr-pipeline/RDS Sec.jpg", "/projects/dr-pipeline/HealthChecksR53.jpg", "/projects/dr-pipeline/HealthCheckR53_1.jpg", "/projects/dr-pipeline/ALB-1.png", "/projects/dr-pipeline/TG.png", "/projects/dr-pipeline/Dashboard.jpg", "/projects/dr-pipeline/DR Simulation.jpg", "/projects/dr-pipeline/Write Simulation.jpg", "/projects/dr-pipeline/Terminal.jpg"],
   },
   {
-    id: "10",
+    id: "11",
     name: "AWS Static Portfolio Hosting",
     description:
       "Production-grade secure static website hosting on AWS with private S3 storage, CloudFront CDN, and automated SSL/TLS.",
@@ -330,7 +361,7 @@ export const projects: Project[] = [
     visuals: ["/projects/portfolio/s3_1.png", "/projects/portfolio/s3_2.png", "/projects/portfolio/CF_1.png", "/projects/portfolio/ACM.png"]
   },
   {
-    id: "11",
+    id: "12",
     name: "QR Code Generator (Serverless)",
     description:
       "Scalable serverless QR Code generator on AWS supporting on-demand generation with a user-friendly interface.",
