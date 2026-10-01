@@ -5,7 +5,7 @@ export type Project = {
   name: string;
   description: string;
   techStack: string[];
-  category: "infrastructure" | "automation" | "monitoring" | "security" | "cicd" | "serverless" | "ai";
+  category: "infrastructure" | "automation" | "monitoring" | "security" | "cicd" | "serverless" | "AI";
   githubUrl?: string;
   liveUrl?: string;
   architectureUrl?: string;
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     description:
       "A state-of-the-art Retrieval-Augmented Generation (RAG) platform designed for complex document reasoning, enterprise-grade monitoring, and seamless multi-agent collaboration.",
     techStack: ["FastAPI", "React", "Groq", "LangChain", "ChromaDB", "PostgreSQL", "Redis", "Docker", "Kubernetes", "Prometheus", "Grafana"],
-    category: "ai",
+    category: "AI",
     githubUrl: "https://github.com/lightsspeed/Rag_2026",
     hook: "Beyond simple search—intelligent reasoning. KnowledgeFlow AI turns static documents into a collaborative multi-agent knowledge ecosystem.",
     problem: "Enterprises struggle with 'hallucinations' and lack of context in standard LLMs, making it difficult to extract reliable insights from vast, complex document silos.",
@@ -171,38 +171,38 @@ export const projects: Project[] = [
       "Provided 99.9% uptime visibility across a fleet of 50+ microservices."
     ]
   },
-/*
-  {
-    id: "6",
-    name: "Secret Management System",
-    description:
-      "Centralized secrets management using HashiCorp Vault with automated rotation and audit logging.",
-    techStack: ["Vault", "Kubernetes", "Terraform", "Python"],
-    category: "security",
-    githubUrl: "https://github.com/lightsspeed",
-    hook: "Your secrets are only as safe as your management system. Centralize, rotate, and secure your most sensitive environment data.",
-    problem: "Hardcoded secrets and unencrypted environment variables pose a massive security risk and complicate compliance audits.",
-    solution: "A production-grade HashiCorp Vault cluster for managing dynamic secrets, database credentials, and transit encryption.",
-    keyFeatures: [
-      "Automated secret rotation for databases and cloud credentials",
-      "Kubernetes sidecar injection for seamless application integration",
-      "Strict audit logging and compliance reporting for all secret access",
-      "Transit encryption as a service to protect data in motion",
-      "Identity-based access control with fine-grained policies"
-    ],
-    lessonsLearned: [
-      "Dynamic, short-lived tokens are far more secure than long-lived static keys.",
-      "Automated rotation is the only way to manage credentials at scale securely.",
-      "Centralizing secrets simplifies both security enforcement and compliance auditing.",
-      "Integrating Vault with CI/CD ensures secrets are never committed to Git."
-    ],
-    achievements: [
-      "Eliminated 100% of hardcoded secrets across all development branches.",
-      "Automated 24-hour credential rotation for over 50 production systems.",
-      "Reduced credential leak risk to near-zero with dynamic service account tokens."
-    ]
-  },
-*/
+  /*
+    {
+      id: "6",
+      name: "Secret Management System",
+      description:
+        "Centralized secrets management using HashiCorp Vault with automated rotation and audit logging.",
+      techStack: ["Vault", "Kubernetes", "Terraform", "Python"],
+      category: "security",
+      githubUrl: "https://github.com/lightsspeed",
+      hook: "Your secrets are only as safe as your management system. Centralize, rotate, and secure your most sensitive environment data.",
+      problem: "Hardcoded secrets and unencrypted environment variables pose a massive security risk and complicate compliance audits.",
+      solution: "A production-grade HashiCorp Vault cluster for managing dynamic secrets, database credentials, and transit encryption.",
+      keyFeatures: [
+        "Automated secret rotation for databases and cloud credentials",
+        "Kubernetes sidecar injection for seamless application integration",
+        "Strict audit logging and compliance reporting for all secret access",
+        "Transit encryption as a service to protect data in motion",
+        "Identity-based access control with fine-grained policies"
+      ],
+      lessonsLearned: [
+        "Dynamic, short-lived tokens are far more secure than long-lived static keys.",
+        "Automated rotation is the only way to manage credentials at scale securely.",
+        "Centralizing secrets simplifies both security enforcement and compliance auditing.",
+        "Integrating Vault with CI/CD ensures secrets are never committed to Git."
+      ],
+      achievements: [
+        "Eliminated 100% of hardcoded secrets across all development branches.",
+        "Automated 24-hour credential rotation for over 50 production systems.",
+        "Reduced credential leak risk to near-zero with dynamic service account tokens."
+      ]
+    },
+  */
   {
     id: "7",
     name: "Blue-Green / Canary Deployment Strategy",
@@ -233,68 +233,68 @@ export const projects: Project[] = [
       "Increased deployment frequency by 2x by empowering developers with safe rollouts."
     ]
   },
-/*
-  {
-    id: "8",
-    name: "Multi-Cloud CI/CD Platform",
-    description:
-      "Unified CI/CD platform supporting deployments across AWS, Azure, and GCP with centralized pipeline management.",
-    techStack: ["GitHub Actions", "Terraform", "Docker", "Kubernetes"],
-    category: "cicd",
-    githubUrl: "https://github.com/lightsspeed",
-    hook: "Deploy anywhere, from anywhere. Build a truly cloud-agnostic deployment system that standardizes your workflow across providers.",
-    problem: "Vendor lock-in and fragmented pipelines make managing multi-cloud environments inefficient and error-prone.",
-    solution: "A unified platform built on GitHub Actions and Terraform that abstracts the cloud provider, allowing for standardized multi-cloud deployments.",
-    keyFeatures: [
-      "Cross-cloud Terraform modules for standardized infrastructure provisioning",
-      "Unified CI/CD pipelines with conditional deployment logic",
-      "Standardized build and test environments for AWS, Azure, and GCP",
-      "Centralized artifact repository and container image management",
-      "Global secrets management synchronized across multiple environments"
-    ],
-    lessonsLearned: [
-      "Standardizing the deployment interface allows teams to focus on logic, not cloud quirks.",
-      "Modular IAC is the only way to maintain consistency across different providers.",
-      "Cross-cloud authentication (OIDC) is significantly more secure than long-lived keys.",
-      "Uniform monitoring across clouds is necessary for a true multi-cloud strategy."
-    ],
-    achievements: [
-      "Standardized 100% of deployment workflows across three major cloud platforms.",
-      "Reduced multi-cloud deployment maintenance overhead by 40% using shared modules.",
-      "Enabled seamless workload migration between clouds in under 30 minutes."
-    ]
-  },
-  {
-    id: "9",
-    name: "Multi-Cloud Infrastructure with Terraform",
-    description:
-      "Provisioning and managing infrastructure across AWS, Azure, and GCP using Terraform for consistent and repeatable deployments.",
-    techStack: ["Terraform", "AWS", "Azure", "GCP", "Python"],
-    category: "infrastructure",
-    githubUrl: "https://github.com/lightsspeed",
-    hook: "One tool to rule them all. Provision and manage your entire multi-cloud stack with a single source of code as truth.",
-    problem: "Each cloud provider has its own unique API and configuration management, creating a steep learning curve and fragmented operations.",
-    solution: "A massive, modular Terraform-driven infrastructure codebase that provisions VPCs, clusters, and databases across AWS, Azure, and GCP.",
-    keyFeatures: [
-      "Highly modular Terraform structure for cross-provider resource sharing",
-      "Centralized state management with locking and encryption",
-      "Automated 'Plan and Apply' workflows with GitHub Actions integration",
-      "Consistent tagging and naming conventions across all cloud platforms",
-      "Cost-analysis integration to track multi-cloud spending in real-time"
-    ],
-    lessonsLearned: [
-      "Proper module design is the only way to safely manage large-scale infrastructure.",
-      "State locking and remote backends are non-negotiable for collaborative teams.",
-      "Infrastructure testing (Terratest) ensures multi-provider changes are safe.",
-      "Managing multi-cloud state requires careful attention to IAM and provider auth."
-    ],
-    achievements: [
-      "Managed 1,000+ cloud resources with 100% Infrastructure-as-Code coverage.",
-      "Eliminated 100% of manual configuration drift through automated reconciliation.",
-      "Reduced new environment provisioning time from 2 weeks to under 30 minutes."
-    ]
-  },
-*/
+  /*
+    {
+      id: "8",
+      name: "Multi-Cloud CI/CD Platform",
+      description:
+        "Unified CI/CD platform supporting deployments across AWS, Azure, and GCP with centralized pipeline management.",
+      techStack: ["GitHub Actions", "Terraform", "Docker", "Kubernetes"],
+      category: "cicd",
+      githubUrl: "https://github.com/lightsspeed",
+      hook: "Deploy anywhere, from anywhere. Build a truly cloud-agnostic deployment system that standardizes your workflow across providers.",
+      problem: "Vendor lock-in and fragmented pipelines make managing multi-cloud environments inefficient and error-prone.",
+      solution: "A unified platform built on GitHub Actions and Terraform that abstracts the cloud provider, allowing for standardized multi-cloud deployments.",
+      keyFeatures: [
+        "Cross-cloud Terraform modules for standardized infrastructure provisioning",
+        "Unified CI/CD pipelines with conditional deployment logic",
+        "Standardized build and test environments for AWS, Azure, and GCP",
+        "Centralized artifact repository and container image management",
+        "Global secrets management synchronized across multiple environments"
+      ],
+      lessonsLearned: [
+        "Standardizing the deployment interface allows teams to focus on logic, not cloud quirks.",
+        "Modular IAC is the only way to maintain consistency across different providers.",
+        "Cross-cloud authentication (OIDC) is significantly more secure than long-lived keys.",
+        "Uniform monitoring across clouds is necessary for a true multi-cloud strategy."
+      ],
+      achievements: [
+        "Standardized 100% of deployment workflows across three major cloud platforms.",
+        "Reduced multi-cloud deployment maintenance overhead by 40% using shared modules.",
+        "Enabled seamless workload migration between clouds in under 30 minutes."
+      ]
+    },
+    {
+      id: "9",
+      name: "Multi-Cloud Infrastructure with Terraform",
+      description:
+        "Provisioning and managing infrastructure across AWS, Azure, and GCP using Terraform for consistent and repeatable deployments.",
+      techStack: ["Terraform", "AWS", "Azure", "GCP", "Python"],
+      category: "infrastructure",
+      githubUrl: "https://github.com/lightsspeed",
+      hook: "One tool to rule them all. Provision and manage your entire multi-cloud stack with a single source of code as truth.",
+      problem: "Each cloud provider has its own unique API and configuration management, creating a steep learning curve and fragmented operations.",
+      solution: "A massive, modular Terraform-driven infrastructure codebase that provisions VPCs, clusters, and databases across AWS, Azure, and GCP.",
+      keyFeatures: [
+        "Highly modular Terraform structure for cross-provider resource sharing",
+        "Centralized state management with locking and encryption",
+        "Automated 'Plan and Apply' workflows with GitHub Actions integration",
+        "Consistent tagging and naming conventions across all cloud platforms",
+        "Cost-analysis integration to track multi-cloud spending in real-time"
+      ],
+      lessonsLearned: [
+        "Proper module design is the only way to safely manage large-scale infrastructure.",
+        "State locking and remote backends are non-negotiable for collaborative teams.",
+        "Infrastructure testing (Terratest) ensures multi-provider changes are safe.",
+        "Managing multi-cloud state requires careful attention to IAM and provider auth."
+      ],
+      achievements: [
+        "Managed 1,000+ cloud resources with 100% Infrastructure-as-Code coverage.",
+        "Eliminated 100% of manual configuration drift through automated reconciliation.",
+        "Reduced new environment provisioning time from 2 weeks to under 30 minutes."
+      ]
+    },
+  */
   {
     id: "10",
     name: "Multi-Region DR Pipeline Project",
@@ -392,6 +392,37 @@ export const projects: Project[] = [
       "Scales automatically to handle 100,000+ monthly requests with sub-500ms latency."
     ],
     visuals: ["/projects/qr/WebApp.png", "/projects/qr/lambda1.png", "/projects/qr/lambda2.png", "/projects/qr/lambda3.png", "/projects/qr/lambda4.png", "/projects/qr/lambda5.png", "/projects/qr/lambda6.png", "/projects/qr/AGW1.png", "/projects/qr/AGW2.png", "/projects/qr/amplify1.png", "/projects/qr/amplify2.png", "/projects/qr/amplify3.png", "/projects/qr/amplify4.png", "/projects/qr/amplify5.png"],
+  },
+  {
+    id: "13",
+    name: "OwnGPT: Evidence-Driven AI Engineering Platform",
+    description:
+      "A full-stack AI engineering platform with a RAG-powered agent, continuous self-evaluation, explicit governance, offline experimentation, and operational workflows across a 10-pillar architecture.",
+    techStack: ["Python", "FastAPI", "TypeScript", "Vite", "pgvector", "Docker", "Kubernetes", "GitHub Actions", "Whoosh", "RAGAS"],
+    category: "AI",
+    githubUrl: "https://github.com/lightsspeed/own-gpt",
+    hook: "Not just another chatbot — an entire AI engineering ecosystem. OwnGPT bridges the gap between prototype LLM apps and production-grade, evidence-backed AI systems.",
+    problem: "Most RAG applications are fragile prototypes with no evaluation, no governance, and no way to explain why a response was generated — making them unfit for production use.",
+    solution: "A 10-pillar platform that enforces an evidence-backed lifecycle (Observe → Measure → Explain → Propose → Validate → Apply → Operate), ensuring every AI decision is traceable, evaluated, and human-approved.",
+    keyFeatures: [
+      "Advanced RAG pipeline with intent classification, hybrid retrieval, and cross-encoder reranking",
+      "Continuous evaluation engine with RAGAS benchmarks and regression gates",
+      "Evidence engine for confidence calibration and knowledge gap diagnosis",
+      "Multi-format document ingestion (PDF, DOCX, PPTX, XLSX) into pgvector",
+      "Architecture governance with artifact registry and lineage tracking",
+      "Full-stack: Vite/TypeScript frontend + FastAPI backend, Dockerized with K8s manifests"
+    ],
+    lessonsLearned: [
+      "Evidence-backed evaluation is the only reliable way to prevent RAG quality regression in production.",
+      "Hybrid retrieval (BM25 + dense embeddings) dramatically outperforms either approach alone.",
+      "Governance and lineage tracking are not optional for production AI — they are foundational.",
+      "A 10-pillar separation of concerns keeps a complex AI platform maintainable and extensible."
+    ],
+    achievements: [
+      "Built a complete AI platform with 26 registered capabilities across 10 architectural pillars.",
+      "Implemented a full evaluation suite with 5 benchmark datasets and automated regression gates.",
+      "Designed a traceable artifact graph from raw telemetry to production configuration changes."
+    ]
   }
 ];
 
@@ -403,6 +434,6 @@ export const projectCategories = [
   { value: "security", label: "Security" },
   { value: "cicd", label: "CI/CD" },
   { value: "serverless", label: "Serverless" },
-  { value: "ai", label: "AI" }
+  { value: "AI", label: "AI" }
 ];
 
